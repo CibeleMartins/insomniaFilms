@@ -7,7 +7,7 @@
     outline: none;
     padding: 10px;
     transition: width 0.4s ease;
-    background: linear-gradient(45deg, #884177, #687466, #cd8d7b, #fbc490);
+    background: linear-gradient(45deg, #849B5C, #687466, #50D5B7, #067d68);
     animation: colors 15s ease infinite;
    
 }
@@ -20,6 +20,10 @@
 
 .input::placeholder {
     color: aliceblue;
+    font-size: 10px;
+    letter-spacing: 2px;
+    font-weight: 200;
+    text-transform: uppercase;
 }
 
 

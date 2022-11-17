@@ -38,7 +38,7 @@ video {
 }
 
 .gradient {
-  background: linear-gradient(45deg, #884177, #687466, #cd8d7b, #fbc490);
+  background: linear-gradient(45deg, #849B5C, #687466, #50D5B7, #067d68);
   background-size: 300% 300%;
   animation: colors 15s ease infinite;
 }
@@ -58,3 +58,108 @@ video {
     background-position: 0% 50%;
   }
 }
+
+h1 {
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0 0 20px;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 1.2;
+  opacity: 0.75;
+  margin: 0;
+}
+
+.word-wrapper {
+  white-space: nowrap;
+}
+
+button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  outline: none;
+  appearance: none;
+  cursor: pointer;
+  color: #999;
+  text-transform: uppercase;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+button span {
+  margin-left: 5px;
+}
+
+.motionDiv {
+  width: 50%;
+  height: 300px;
+}
+
+.mySwiper {
+  width: 200px;
+}
+
+.swiper {
+  width: 240px;
+  height: 320px;
+}
+
+.swiper-slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.swiper-slide:nth-child(1n) {
+  background-color: rgb(206, 17, 17);
+}
+
+.swiper-slide:nth-child(2n) {
+  background-color: rgb(0, 140, 255);
+}
+
+.swiper-slide:nth-child(3n) {
+  background-color: rgb(10, 184, 111);
+}
+
+.swiper-slide:nth-child(4n) {
+  background-color: rgb(211, 122, 7);
+}
+
+.swiper-slide:nth-child(5n) {
+  background-color: rgb(118, 163, 12);
+}
+
+.swiper-slide:nth-child(6n) {
+  background-color: rgb(180, 10, 47);
+}
+
+.swiper-slide:nth-child(7n) {
+  background-color: rgb(35, 99, 19);
+}
+
+.swiper-slide:nth-child(8n) {
+  background-color: rgb(0, 68, 255);
+}
+
+.swiper-slide:nth-child(9n) {
+  background-color: rgb(218, 12, 218);
+}
+
+.swiper-slide:nth-child(10n) {
+  background-color: rgb(54, 94, 77);
+}
+
