@@ -1,17 +1,28 @@
-import { HStack, Input } from "@chakra-ui/react";
-
-import styles from './Heaeer.module.css';
+import * as React from "react";
+import { HStack, Input, InputGroup} from "@chakra-ui/react";
+import styles from './Header.module.css';
 
 const Header = ()=> {
 
     return (
         <HStack
-        padding={50}>
-            <Input
-            outline="none"
-            border="none"
-            borderRadius="10px"
-            className={styles.header}/>
+        w="100%"
+        // padding={50}
+        display="flex"
+        alignItems="center"
+        justifyContent="center">
+
+            <InputGroup
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+            padding={40}>
+                <Input
+                className={styles.input} 
+                type='search' 
+                placeholder='Pesquise o que voce deseja assistir' />
+            </InputGroup>
+   
         </HStack>
     )
 };

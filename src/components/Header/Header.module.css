@@ -1,0 +1,40 @@
+.input {
+
+    width: 5%;
+    height: 20%;
+    border: none;
+    border-radius: 80%;
+    outline: none;
+    padding: 10px;
+    transition: width 0.4s ease;
+    background: linear-gradient(45deg, #884177, #687466, #cd8d7b, #fbc490);
+    animation: colors 15s ease infinite;
+   
+}
+
+.input:hover {
+    width: 50%;
+    height: 50%;
+    border-radius: 10%;
+}
+
+.input::placeholder {
+    color: aliceblue;
+}
+
+
+@keyframes colors {
+
+    8% {
+      background-position: 0% 50%;
+    }
+  
+    50% {
+      background-position: 100% 50%;
+    }
+  
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+

@@ -10,7 +10,7 @@ const RoutesApp = () => {
   useEffect(() => {
     setInterval(() => {
       setIsLoading(false);
-    }, 22000);
+    }, 2000);
   }, []);
 
   return (
