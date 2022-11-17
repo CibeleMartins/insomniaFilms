@@ -10,8 +10,9 @@ const Loading = ()=> {
         w="100%"
         h="100vh"
         bg="black">
+            <div className="overlay"></div>
             <video src={video} autoPlay loop muted/>
-           <img className="insomnia" alt="logo" src={logo}/>
+            <img className="insomnia" alt="logo" src={logo}/>
         </Center>
     );
 };

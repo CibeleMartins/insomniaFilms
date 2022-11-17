@@ -7,11 +7,11 @@ import Load from "../pages/Load";
 const RoutesApp = () => {
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    setInterval(() => {
-      setIsLoading(false);
-    }, 22000);
-  }, []);
+//   useEffect(() => {
+//     setInterval(() => {
+//       setIsLoading(false);
+//     }, 22000);
+//   }, []);
 
   return (
     <>
