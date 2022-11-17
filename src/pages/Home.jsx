@@ -1,9 +1,15 @@
-
+import { VStack } from "@chakra-ui/react";
 
 const Home = ()=> {
 
     return (
-        <h1>Home</h1>
+        
+        <VStack
+        h="100vh"
+        width="100%"
+        className="gradient">
+
+        </VStack>
     )
 }
 

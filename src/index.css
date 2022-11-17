@@ -36,3 +36,25 @@ video {
   height: 100%;
   background-color: rgba(0, 0, 0, .4);
 }
+
+.gradient {
+  background: linear-gradient(45deg, #884177, #687466, #cd8d7b, #fbc490);
+  background-size: 300% 300%;
+  animation: colors 15s ease infinite;
+}
+
+
+@keyframes colors {
+
+  8% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
