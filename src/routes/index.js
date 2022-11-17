@@ -1,19 +1,25 @@
 import { Route, Routes } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 import Home from "../pages/Home";
+import Load from "../pages/Load";
 
-const RoutesApp = ()=> {
+const RoutesApp = () => {
+  const [isLoading, setIsLoading] = useState(true);
 
-    return (
+  useEffect(() => {
+    setInterval(() => {
+      setIsLoading(false);
+    }, 22000);
+  }, []);
 
-        <>
-            <Routes>
-                <Route exact path="/" element={<Home/>}/>
-            </Routes>
-        
-        </>
-    );
+  return (
+    <>
+      <Routes>
+        <Route exact path="/" element={isLoading ? <Load /> : <Home />} />
+      </Routes>
+    </>
+  );
 };
-
 
 export default RoutesApp;
