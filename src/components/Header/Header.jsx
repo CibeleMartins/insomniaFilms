@@ -8,6 +8,7 @@ const Header = ()=> {
         <HStack
         w="100%"
         // padding={50}
+        className={styles.header}
         display="flex"
         alignItems="center"
         justifyContent="center">
@@ -16,7 +17,7 @@ const Header = ()=> {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            padding={40}>
+            padding={20}>
                 <Input
                 className={styles.input} 
                 type='search' 

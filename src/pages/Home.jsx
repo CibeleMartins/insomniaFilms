@@ -1,4 +1,4 @@
-import { VStack, HStack } from "@chakra-ui/react";
+import { VStack, HStack, Center } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import AnimatedText from "../components/AnimatedText/AnimatedText";
@@ -29,27 +29,31 @@ const Home = ()=> {
       }
     };
   
-    // Quick and dirt for the example
-    const handleReplay = () => {
-      setReplay(!replay);
-      setTimeout(() => {
-        setReplay(true);
-      }, 600);
-    };
+    // // Quick and dirt for the example
+    // const handleReplay = () => {
+    //   setReplay(!replay);
+    //   setTimeout(() => {
+    //     setReplay(true);
+    //   }, 600);
+    // };
   
 
     return (
-        
+        <>
+        <Header/>
         <VStack
         h="100vh"
         width="100%"
         className="gradient"
         display="flex"
-        alignItems="flex-start">
-            <Header/>
+        alignItems="center"
+        justifyContent="center">
             <HStack
             w="100%"
-            // paddingLeft="50px"
+            h={300}
+            display="flex"
+            alignItems="center"
+            spacing={350}
             >
                 <motion.div
                 className="motionDiv"
@@ -68,9 +72,11 @@ const Home = ()=> {
                 </button> */}
                 </motion.div>
 
-                <Slider/>
+
+                  <Slider/>
             </HStack>
         </VStack>
+        </>
     )
 }
 
