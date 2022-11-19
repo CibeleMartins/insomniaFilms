@@ -47,14 +47,12 @@ const Home = ()=> {
         className="gradient"
         display="flex"
         alignItems="center"
-        justifyContent="center">
+        justifyContent="space-evenly">
             <HStack
             w="100%"
-            h={300}
+            h="100vh"
             display="flex"
-            alignItems="center"
-            spacing={350}
-            >
+            spacing={200}>
                 <motion.div
                 className="motionDiv"
                 initial="hidden"

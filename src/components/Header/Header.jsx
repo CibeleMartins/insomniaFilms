@@ -17,7 +17,7 @@ const Header = ()=> {
             display="flex"
             alignItems="center"
             justifyContent="center"
-            padding={20}>
+            padding={40}>
                 <Input
                 className={styles.input} 
                 type='search' 
