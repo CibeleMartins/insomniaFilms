@@ -5,13 +5,21 @@ const useHttp = ()=> {
 
     const [search, setSearch] = useState('');
 
+    const [moviesOmdb, setMoviesOmdb] = useState([]);
+
     const apiKey = process.env.REACT_APP_KEY_API_OMDB
 
     const getMoviesOmdb = (valueInput) => {
 
         setSearch(valueInput)
 
-       const requisition = axios.get(`https://www.omdbapi.com/?s=${search}&apikey=${apiKey}`).then(response => console.log(response));
+        try {
+            const requisition = axios.get(`https://www.omdbapi.com/?s=${search}&apikey=${apiKey}`);
+
+        } catch (error) {
+            
+            console.log(error)
+        }
 
        console.log(valueInput)
     }
