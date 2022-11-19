@@ -8,9 +8,7 @@ const Header = ()=> {
 
     const [search, setSearch] =  useState('');
 
-
     const {getMoviesOmdb: movies} = useHttp();
-
 
     const changeSearchHandler = (event)=> {
 
