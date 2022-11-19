@@ -1,8 +1,22 @@
-import * as React from "react";
+
+import  React, {useState} from "react";
 import { HStack, Input, InputGroup} from "@chakra-ui/react";
+import useHttp from "../../hooks/use-http";
 import styles from './Header.module.css';
 
 const Header = ()=> {
+
+    const [search, setSearch] =  useState('');
+
+
+    const {getMoviesOmdb: movies} = useHttp();
+
+
+    const changeSearchHandler = (event)=> {
+
+        setSearch(event.target.value)
+        movies(event.target.value)
+    }
 
     return (
         <HStack
@@ -19,6 +33,8 @@ const Header = ()=> {
             justifyContent="center"
             padding={40}>
                 <Input
+                onChange={changeSearchHandler}
+                value={search}
                 className={styles.input} 
                 type='search' 
                 placeholder='Pesquise o que voce deseja assistir' />
