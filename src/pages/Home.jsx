@@ -1,17 +1,14 @@
-import { VStack, HStack, Center } from "@chakra-ui/react";
-import React, { useState } from "react";
+import { VStack, HStack} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import AnimatedText from "../components/AnimatedText/AnimatedText";
 import Slider from '../components/Slider/Slider'
-
-
 
 import Header from "../components/Header/Header";
 
 const Home = ()=> {
 
-    const [replay, setReplay] = useState(true);
-    // Placeholder text data, as if from API
+    // const [replay, setReplay] = useState(true);
+    // // Placeholder text data, as if from API
     const placeholderText = [
       { type: "heading1", text: "A sua locadora online" },
       {
@@ -57,7 +54,7 @@ const Home = ()=> {
                 className="motionDiv"
                 initial="hidden"
                 // animate="visible"
-                animate={replay ? "visible" : "hidden"}
+                animate={"visible"}
                 variants={container}
                 >
                 <div className="container">

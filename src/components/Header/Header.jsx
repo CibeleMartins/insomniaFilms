@@ -1,5 +1,5 @@
 
-import  React, {useState} from "react";
+import  React, {useState, useEffect} from "react";
 import { HStack, Input, InputGroup} from "@chakra-ui/react";
 import useHttp from "../../hooks/use-http";
 import styles from './Header.module.css';
@@ -15,8 +15,13 @@ const Header = ()=> {
     const changeSearchHandler = (event)=> {
 
         setSearch(event.target.value)
-        movies(event.target.value)
-    }
+        // movies(event.target.value)
+    };
+
+    useEffect(()=> {
+
+        movies(search)
+    }, [search, movies])
 
     return (
         <HStack
@@ -39,7 +44,7 @@ const Header = ()=> {
                 type='search' 
                 placeholder='Pesquise o que voce deseja assistir' />
             </InputGroup>
-   
+            {/* <button onClick={()=> movies()}>requisicao</button> */}
         </HStack>
     )
 };
