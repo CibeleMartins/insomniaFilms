@@ -1,0 +1,13 @@
+.input {
+    width: 30%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: linear-gradient(45deg, #849B5C, #687466, #50D5B7, #067d68);
+    color: aliceblue;
+}
+
+.input::placeholder {
+    color: aliceblue;
+}
