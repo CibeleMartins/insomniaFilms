@@ -1,5 +1,6 @@
 import classes from './MovieDetailsModal.module.css';
 import ReactDOM from 'react-dom';
+import { Modal } from '@chakra-ui/react';
 
 const Backdrop = ({onClose})=> {
 

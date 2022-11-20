@@ -19,12 +19,16 @@ export default function Slider({data}) {
 
   console.log(displayDetails)
   
+  const closeModal = ()=> {
+    setDisplayDetails({display: false})
+  }
 
   return (
 
     <>
     {displayDetails.display === true && 
-    <MovieDetailsModal>
+    <MovieDetailsModal
+    onClose={closeModal}>
       <HStack>
 
         <img alt="poster" src={displayDetails.details[1]}/>
