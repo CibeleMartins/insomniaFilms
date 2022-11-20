@@ -29,7 +29,7 @@
 import React from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import { Center } from "@chakra-ui/react";
+import { Center, Button } from "@chakra-ui/react";
 import CheckoutForm from "../components/PaymentForm/CheckoutForm";
 import Input from "../components/Input/Input";
 import styles from "./MovieLocating.module.css";
@@ -53,6 +53,11 @@ export default function MovieLocating() {
         <Elements stripe={promise}>
           <CheckoutForm />
         </Elements>
+
+        <Button
+        className={styles.btn}>
+
+        </Button>
       </div>
     </Center>
   );

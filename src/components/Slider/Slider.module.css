@@ -26,17 +26,6 @@
     height: 320px;
 }
 
-.btn {
-    color: aliceblue;
-    border: none;
-    outline: none;
-    height: 30px;
-    width: 50%;
-    border-radius: 10px;
-    background: linear-gradient(45deg, #849B5C, #687466, #50D5B7, #067d68);
-    cursor: pointer;
-}
-
 .containerDetails {
     display: flex;
     flex-direction: column;
