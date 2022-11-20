@@ -1,13 +1,13 @@
-import { useState} from "react";
+import { useState, useCallback} from "react";
 import axios from "axios";
 
 const useHttp = ()=> {
 
     const [search, setSearch] = useState('');
 
-    const apiKey = process.env.REACT_APP_KEY_API_OMDB
+    const [movies, setMovies] = useState([]);
 
-    let arrayMovies = [];
+    const apiKey = process.env.REACT_APP_KEY_API_OMDB
 
     const getMoviesOmdb = async (valueInput) => {
 
@@ -16,21 +16,24 @@ const useHttp = ()=> {
         try {
             const requisition = await axios.get(`https://www.omdbapi.com/?s=${search}&apikey=${apiKey}`);
 
-            const data = await requisition.data
+            const data = await requisition.data.Search
 
-            arrayMovies.push(data)
+            setMovies(data)
 
-            console.log(arrayMovies)
+            console.log(data)
 
         } catch (error) {
             
             console.log(error)
         }
+
     }
 
     return {
         getMoviesOmdb,
-        arrayMovies
+        moviesArray: movies,
+        // getData
+    
     };
 };
 

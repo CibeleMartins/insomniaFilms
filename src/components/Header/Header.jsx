@@ -6,20 +6,24 @@ import styles from './Header.module.css';
 
 const Header = ()=> {
 
-    const [search, setSearch] =  useState('');
+    // const [search, setSearch] =  useState([]);
 
-    const {getMoviesOmdb: movies} = useHttp();
+    // const {getMoviesOmdb: movies, moviesArray} = useHttp();
 
-    const changeSearchHandler = (event)=> {
+    // const changeSearchHandler = (event)=> {
 
-        setSearch(event.target.value)
-        // movies(event.target.value)
-    };
+    //     setSearch(event.target.value)
+    //     // movies(event.target.value)
+   
+    // };
 
-    useEffect(()=> {
+    // console.log(moviesArray)
 
-        movies(search)
-    }, [search, movies])
+    // useEffect(()=> {
+
+    //    movies(search)
+
+    // }, [search, moviesArray, movies])
 
     return (
         <HStack
