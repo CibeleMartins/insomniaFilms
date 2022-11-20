@@ -3,6 +3,8 @@ import { useEffect } from "react";
 import useHttp from "../../hooks/use-http";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import Loading from "../Loading/Loading";
+
 import "swiper/css";
 import "swiper/css/effect-cards";
 
@@ -38,7 +40,9 @@ export default function Slider({data}) {
             </SwiperSlide>
             </>
           )
-        }) : <SwiperSlide>Pesquise o que voce quer assistir</SwiperSlide>}
+        }) : <SwiperSlide>
+            Pesquise um filme!
+          </SwiperSlide>}
         
  
       </Swiper>

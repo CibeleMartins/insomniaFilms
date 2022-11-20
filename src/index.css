@@ -80,9 +80,10 @@ h2 {
 }
 
 .motionDiv {
-  width: 52%;
+  width: 50%;
   height: 300px;
-  padding-left: 80px;
+  padding-left: 5%;
+  padding-bottom: 5%;
 
 }
 
