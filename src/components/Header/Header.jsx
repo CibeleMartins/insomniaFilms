@@ -4,6 +4,8 @@ import { HStack, Input, InputGroup} from "@chakra-ui/react";
 import useHttp2 from "../../hooks/use-http-test";
 import styles from './Header.module.css';
 
+import searchIcon from '../../assets/searchIcon.svg';
+
 const Header = ({onGetFilms})=> {
 
     const [search, setSearch] =  useState([]);
@@ -28,7 +30,7 @@ const Header = ({onGetFilms})=> {
 
     useEffect(()=> {
         sendRequest()
-    }, [sendRequest])
+    }, [sendRequest, search])
 
     return (
         <HStack
@@ -40,16 +42,20 @@ const Header = ({onGetFilms})=> {
         justifyContent="center">
 
             <InputGroup
+            position="relative"
+            w="100%"
             display="flex"
             alignItems="center"
             justifyContent="center"
             padding={40}>
                 <Input
+                float="left"
                 onChange={changeSearchHandler}
                 value={search}
                 className={styles.input} 
-                type='search' 
-                placeholder='Pesquise o que voce deseja assistir' />
+                type='text' 
+                placeholder='Pesquise o que voce deseja assistir'/>
+                <img className={styles.searchIcon} alt="search" src={searchIcon}/>
             </InputGroup>
             {/* <button onClick={()=> movies()}>requisicao</button> */}
         </HStack>

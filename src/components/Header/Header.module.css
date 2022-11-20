@@ -31,6 +31,14 @@
     text-transform: uppercase;
 }
 
+.searchIcon {
+
+  float:left;
+  margin:3px 0px 0px -4%;
+  cursor:pointer;
+  color: aliceblue;
+}
+
 
 @keyframes colors {
 

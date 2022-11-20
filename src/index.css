@@ -23,7 +23,7 @@ video {
 .insomnia {
   position: absolute;
   width: 30%;
-  height: 60%;
+  /* height: 60%; */
   top: 50;
   display: flex;
 }
