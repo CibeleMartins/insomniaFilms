@@ -4,9 +4,10 @@ import { HStack, Input, InputGroup} from "@chakra-ui/react";
 import useHttp2 from "../../hooks/use-http-test";
 import styles from './Header.module.css';
 
-const Header = ()=> {
+const Header = ({onGetFilms})=> {
 
     const [search, setSearch] =  useState([]);
+    const [films, setFilms] = useState([]);
 
     const changeSearchHandler = (event)=> {
 
@@ -14,7 +15,12 @@ const Header = ()=> {
     };
 
     const getData = (data)=> {
-        console.log(data)
+        // console.log(data.Search)
+        setFilms(data.Search)
+        console.log(films)
+
+        onGetFilms(films)
+
     };
 
     const apiKey = process.env.REACT_APP_KEY_API_OMDB

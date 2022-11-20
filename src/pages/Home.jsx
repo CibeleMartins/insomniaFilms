@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { VStack, HStack} from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import AnimatedText from "../components/AnimatedText/AnimatedText";
@@ -9,6 +10,9 @@ const Home = ()=> {
 
     // const [replay, setReplay] = useState(true);
     // // Placeholder text data, as if from API
+
+    const [films, setFilms] = useState([]);
+
     const placeholderText = [
       { type: "heading1", text: "A sua locadora online" },
       {
@@ -33,11 +37,16 @@ const Home = ()=> {
     //     setReplay(true);
     //   }, 600);
     // };
-  
+    
+    const getFilmsInHeader = (films)=> {
+
+      setFilms(films)
+
+    }
 
     return (
         <>
-        <Header/>
+        <Header onGetFilms={getFilmsInHeader}/>
         <VStack
         h="100vh"
         width="100%"
@@ -68,7 +77,7 @@ const Home = ()=> {
                 </motion.div>
 
 
-                  <Slider/>
+                  <Slider data={films}/>
             </HStack>
         </VStack>
         </>

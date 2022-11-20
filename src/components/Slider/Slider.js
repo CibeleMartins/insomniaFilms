@@ -11,9 +11,9 @@ import styles from './Slider.module.css'
 // import required modules
 import { EffectCards } from "swiper";
 
-export default function Slider() {
+export default function Slider({data}) {
   
-
+  console.log(data)
   return (
 
     <div className={styles.main}>
