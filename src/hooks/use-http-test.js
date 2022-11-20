@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 
 
-const useHttp = (resquestConfig, applyData)=> {
+const useHttp2 = (resquestConfig, applyData)=> {
 
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const sendRequest = async ()=>  {
+    const sendRequest = useCallback(async ()=>  {
 
         setIsLoading(true);
         setError(null);
@@ -25,13 +25,14 @@ const useHttp = (resquestConfig, applyData)=> {
           }
     
           const data = await response.json();
+          console.log(data)
           applyData(data)
 
         } catch (err) {
           setError(err.message || 'Something went wrong!');
         }
         setIsLoading(false);
-      };
+      }, [resquestConfig.url]);
     
     
       return {
@@ -41,4 +42,4 @@ const useHttp = (resquestConfig, applyData)=> {
       }
 };
 
-export default useHttp;
+export default useHttp2;

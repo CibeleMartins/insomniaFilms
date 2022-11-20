@@ -1,29 +1,28 @@
 
 import  React, {useState, useEffect} from "react";
 import { HStack, Input, InputGroup} from "@chakra-ui/react";
-import useHttp from "../../hooks/use-http";
+import useHttp2 from "../../hooks/use-http-test";
 import styles from './Header.module.css';
 
 const Header = ()=> {
 
-    // const [search, setSearch] =  useState([]);
+    const [search, setSearch] =  useState([]);
 
-    // const {getMoviesOmdb: movies, moviesArray} = useHttp();
+    const changeSearchHandler = (event)=> {
 
-    // const changeSearchHandler = (event)=> {
+        setSearch(event.target.value);
+    };
 
-    //     setSearch(event.target.value)
-    //     // movies(event.target.value)
-   
-    // };
+    const getData = (data)=> {
+        console.log(data)
+    };
 
-    // console.log(moviesArray)
+    const apiKey = process.env.REACT_APP_KEY_API_OMDB
+    const { sendRequest } = useHttp2({url:`https://www.omdbapi.com/?s=${search}&apikey=${apiKey}`}, getData)
 
-    // useEffect(()=> {
-
-    //    movies(search)
-
-    // }, [search, moviesArray, movies])
+    useEffect(()=> {
+        sendRequest()
+    }, [sendRequest])
 
     return (
         <HStack
