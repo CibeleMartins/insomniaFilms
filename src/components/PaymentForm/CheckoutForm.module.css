@@ -1,4 +1,12 @@
 
+  button {
+    border: none;
+    outline: none;
+    padding: 5px;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #849B5C, #687466, #50D5B7, #067d68);
+    margin-top: 30px;
+  }
   form {
     width: 30vw;
     align-self: center;

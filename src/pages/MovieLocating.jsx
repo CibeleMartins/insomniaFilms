@@ -32,6 +32,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { Center, Button } from "@chakra-ui/react";
 import CheckoutForm from "../components/PaymentForm/CheckoutForm";
 import Input from "../components/Input/Input";
+import CustomButton from '../components/Button/Button';
 import styles from "./MovieLocating.module.css";
 
 // Make sure to call loadStripe outside of a component’s render to avoid
@@ -54,10 +55,8 @@ export default function MovieLocating() {
           <CheckoutForm />
         </Elements>
 
-        <Button
-        className={styles.btn}>
-
-        </Button>
+       <CustomButton
+       text="Finalizar e locar filme"/>
       </div>
     </Center>
   );
