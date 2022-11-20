@@ -17,6 +17,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer;
     /* padding-top: 100px; */
 }
 
@@ -33,6 +34,7 @@
     width: 50%;
     border-radius: 10px;
     background: linear-gradient(45deg, #849B5C, #687466, #50D5B7, #067d68);
+    cursor: pointer;
 }
 
 .containerDetails {

@@ -1,5 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Loading from "../Loading/Loading";
 import MovieDetailsModal from "../MovieDetails/MovieDetails";
@@ -17,6 +18,8 @@ export default function Slider({data}) {
 
   const [displayDetails, setDisplayDetails] = useState({display: false, details: []});
 
+  const navigation = useNavigate()
+
   console.log(displayDetails)
   
   const closeModal = ()=> {
@@ -26,6 +29,7 @@ export default function Slider({data}) {
   return (
 
     <>
+    {/* modal */}
     {displayDetails.display === true && 
     <MovieDetailsModal
     onClose={closeModal}>
@@ -41,11 +45,13 @@ export default function Slider({data}) {
           </div>
         
 
-          <Button className={styles.btn}>Locar</Button>
+          <Button onClick={()=> navigation('/locarFilme') } className={styles.btn}>Locar</Button>
         </div>
 
       </HStack>
     </MovieDetailsModal>}
+
+    {/* slider */}
     <div className={styles.main}>
       <Swiper
         effect={"cards"}
