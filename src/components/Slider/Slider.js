@@ -14,7 +14,7 @@ import { EffectCards } from "swiper";
 export default function Slider({data}) {
 
 
-console.log(data)
+  console.log(data)
   
 
   return (
@@ -29,9 +29,16 @@ console.log(data)
 
         {data ? data.map((m)=> {
           return (
-            <SwiperSlide key={m.Title} className={styles.swiper}>{m.Title}</SwiperSlide>
+
+            <>
+            <SwiperSlide key={m.Title} className={styles.swiper}>
+              <img className={styles.poster} alt="poster" src={m.Poster}/>
+
+              <p>{m.Title}</p>
+            </SwiperSlide>
+            </>
           )
-        }) : <SwiperSlide>Nao tem data</SwiperSlide>}
+        }) : <SwiperSlide>Pesquise o que voce quer assistir</SwiperSlide>}
         
  
       </Swiper>
