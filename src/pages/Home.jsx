@@ -42,7 +42,7 @@ const Home = ()=> {
 
       setFilms(films)
 
-    }
+    };
 
     return (
         <>
@@ -77,7 +77,7 @@ const Home = ()=> {
                 </motion.div>
 
 
-                  <Slider data={films}/>
+                  <Slider data={films.length > 0 ? films : console.log('nao tem filmes p mandar pro slide')}/>
             </HStack>
         </VStack>
         </>

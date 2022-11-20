@@ -15,7 +15,7 @@ const Header = ({onGetFilms})=> {
     };
 
     const getData = (data)=> {
-        // console.log(data.Search)
+        console.log(data.Search)
         setFilms(data.Search)
         console.log(films)
 

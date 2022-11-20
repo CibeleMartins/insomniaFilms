@@ -12,8 +12,11 @@ import styles from './Slider.module.css'
 import { EffectCards } from "swiper";
 
 export default function Slider({data}) {
+
+
+console.log(data)
   
-  console.log(data)
+
   return (
 
     <div className={styles.main}>
@@ -24,12 +27,12 @@ export default function Slider({data}) {
         className={styles.mySwiper}
       >
 
-        {/* {movies.map((m)=> {
+        { data ? data.map((m)=> {
           return (
             <SwiperSlide key={m.Title} className={styles.swiper}>{m.Title}</SwiperSlide>
           )
-        })}
-         */}
+        }) : <SwiperSlide>Nao tem data</SwiperSlide>}
+        
  
       </Swiper>
       </div>
