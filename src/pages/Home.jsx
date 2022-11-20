@@ -77,7 +77,7 @@ const Home = ()=> {
                 </motion.div>
 
 
-                  <Slider data={films.length > 0 ? films : console.log('nao tem filmes p mandar pro slide')}/>
+                  <Slider data={films}/>
             </HStack>
         </VStack>
         </>

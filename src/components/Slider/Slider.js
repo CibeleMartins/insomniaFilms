@@ -27,7 +27,7 @@ console.log(data)
         className={styles.mySwiper}
       >
 
-        { data ? data.map((m)=> {
+        {data ? data.map((m)=> {
           return (
             <SwiperSlide key={m.Title} className={styles.swiper}>{m.Title}</SwiperSlide>
           )
