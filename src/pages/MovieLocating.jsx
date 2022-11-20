@@ -32,7 +32,6 @@ import { Elements } from "@stripe/react-stripe-js";
 import { Center } from "@chakra-ui/react";
 import CheckoutForm from "../components/PaymentForm/CheckoutForm";
 import Input from "../components/Input/Input";
-import "./MovieLocating.module.css";
 import styles from "./MovieLocating.module.css";
 
 // Make sure to call loadStripe outside of a component’s render to avoid
@@ -46,11 +45,11 @@ export default function MovieLocating() {
   return (
     <Center w="100%" h="100vh" className="gradient">
       <div className={styles.container}>
-        <form className={styles.form}>
-          <Input placeholder="Nome completo" />
-          <Input placeholder="CPF" />
-          <Input placeholder="E-mail" />
-        </form>
+        <div className={styles.form}>
+          <Input placeholder="Nome completo"/>
+          <Input placeholder="CPF"/>
+          <Input placeholder="E-mail"/>
+        </div>
         <Elements stripe={promise}>
           <CheckoutForm />
         </Elements>
