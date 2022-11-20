@@ -17,7 +17,7 @@ const RoutesApp = () => {
   return (
     <>
       <Routes>
-        <Route exact path="/" element={isLoading ? <Load /> : <Home />} />
+        <Route exact path="/home" element={isLoading ? <Load /> : <Home />} />
         <Route exact path="/locarFilme" element={<MovieLocating/>} />
       </Routes>
     </>
