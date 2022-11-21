@@ -1,39 +1,20 @@
-// import { Center} from "@chakra-ui/react";
-// import  Input from '../components/Input/Input';
-
-// import styles from './MovieLocating.module.css';
-// import PaymentForm from "../components/PaymentForm/PaymentForm";
-
-// const MovieLocating = ()=> {
-
-//     return (
-//         <Center
-//         w="100%"
-//         h="100vh"
-//         className="gradient">
-//             {/* <div className={styles.container}>
-//                 <form className={styles.form}>
-//                   <Input placeholder="Nome completo"/>
-//                   <Input placeholder="CPF"/>
-//                   <Input placeholder="E-mail"/>
-//                 </form>
-//             </div> */}
-
-//             <PaymentForm/>
-//         </Center>
-//     )
-// };
-
-// export default MovieLocating;
-
+// hooks
 import React, { useContext } from "react";
+
+// context
 import { AuthContext } from "../context/use-auth";
+
+// stripe elements
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { Center, VStack, HStack, Text } from "@chakra-ui/react";
+
+// components
 import CheckoutForm from "../components/CheckoutForm/CheckoutForm";
 import Input from "../components/Input/Input";
 import CustomButton from "../components/Button/Button";
+
+// styles
 import styles from "./MovieLocating.module.css";
 
 // Make sure to call loadStripe outside of a component’s render to avoid

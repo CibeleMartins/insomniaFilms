@@ -4,49 +4,48 @@ import { createContext } from "react";
 
 import useHttp2 from "../hooks/use-http-test";
 
-export const AuthContext = createContext({
+export const AuthContext = createContext({});
 
-});
+export const AuthContextCustom = ({ children }) => {
+  // const [search, setSearch] = useState('');
+  // const [films, setFilms] = useState([]);
+  const [detailsMovie, setDetailsMovie] = useState({
+    display: false,
+    details: [],
+  });
 
-export const AuthContextCustom = ({children})=> {
+  // const getArrayMoviesSearching = (arrayMovies)=> {
 
-    // const [search, setSearch] = useState('');
-    // const [films, setFilms] = useState([]);
-    const [detailsMovie, setDetailsMovie] = useState({display: false, details: []});
-    
-    // const getArrayMoviesSearching = (arrayMovies)=> {
+  //     setFilms([arrayMovies])
+  //     console.log(arrayMovies, films)
+  // }
 
-    //     setFilms([arrayMovies])
-    //     console.log(arrayMovies, films)
-    // }
-    
-    // const getMovieValueInput = (movieValue)=> {
-    
-    //   setSearch(movieValue)
-    //     console.log(movieValue)
-    // }
+  // const getMovieValueInput = (movieValue)=> {
 
+  //   setSearch(movieValue)
+  //     console.log(movieValue)
+  // }
 
-    // const apiKey = process.env.REACT_APP_KEY_API_OMDB
-    // const { sendRequest } = useHttp2({url:`https://www.omdbapi.com/?s=${search}&apikey=${apiKey}`}, getArrayMoviesSearching)
+  // const apiKey = process.env.REACT_APP_KEY_API_OMDB
+  // const { sendRequest } = useHttp2({url:`https://www.omdbapi.com/?s=${search}&apikey=${apiKey}`}, getArrayMoviesSearching)
 
+  // useEffect(()=> {
+  //     sendRequest()
+  // }, [sendRequest])
 
-    // useEffect(()=> {
-    //     sendRequest()
-    // }, [sendRequest])
+  const getDetailsMovie = (stateDetails) => {
+    console.log(stateDetails);
+    setDetailsMovie(stateDetails);
+  };
 
-    const getDetailsMovie = (stateDetails)=> {
-
-        console.log(stateDetails)
-        setDetailsMovie(stateDetails)
-    }
-  
-
-    return <AuthContext.Provider
-    value={{
+  return (
+    <AuthContext.Provider
+      value={{
         getDetailsMovie,
-        detailsMovie
-    }}>
-             {children}
-        </AuthContext.Provider>
+        detailsMovie,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
+  );
 };

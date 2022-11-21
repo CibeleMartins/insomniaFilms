@@ -1,3 +1,4 @@
+// libs 
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -12,7 +13,7 @@ const tagMap = {
   paragraph: "p",
   heading1: "h1",
   heading2: "h2",
-  heading3: "h2"
+  heading3: "h2",
 };
 
 // AnimatedCharacters
@@ -24,13 +25,13 @@ const AnimatedCharacters = (props) => {
     hidden: {
       y: "200%",
       color: "#0055FF",
-      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 }
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.85 },
     },
     visible: {
       y: 0,
       color: "#FFF",
-      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.75 }
-    }
+      transition: { ease: [0.455, 0.03, 0.515, 0.955], duration: 0.75 },
+    },
   };
 
   //  Split each word of props.text into an array
@@ -63,7 +64,7 @@ const AnimatedCharacters = (props) => {
                 <span
                   style={{
                     overflow: "hidden",
-                    display: "inline-block"
+                    display: "inline-block",
                   }}
                   key={index}
                 >

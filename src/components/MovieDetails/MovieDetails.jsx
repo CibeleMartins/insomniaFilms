@@ -1,29 +1,39 @@
-import classes from './MovieDetailsModal.module.css';
-import ReactDOM from 'react-dom';
-import { Modal } from '@chakra-ui/react';
+// libs
+import ReactDOM from "react-dom";
 
-const Backdrop = ({onClose})=> {
+// components
+import { Modal } from "@chakra-ui/react";
 
-    return <div className={classes.backdrop} onClick={onClose}></div>
+// styles
+import classes from "./MovieDetailsModal.module.css";
+
+const Backdrop = ({ onClose }) => {
+  return <div className={classes.backdrop} onClick={onClose}></div>;
 };
 
-const ModalOverlay = (props)=> {
-    
-    return (<div className={classes.modal}>
-        <div className={classes.content}>{props.children}</div>
-    </div>);
+const ModalOverlay = (props) => {
+  return (
+    <div className={classes.modal}>
+      <div className={classes.content}>{props.children}</div>
+    </div>
+  );
 };
 
-const portalElement = document.getElementById('overlays');
+const portalElement = document.getElementById("overlays");
 
-const MovieDetailsModal = (props)=> {
-
-    return (
-        <>
-           {ReactDOM.createPortal(<Backdrop onClose={props.onClose}/>, portalElement)}
-           {ReactDOM.createPortal(<ModalOverlay>{props.children}</ModalOverlay>, portalElement)}
-        </>
-    );
+const MovieDetailsModal = (props) => {
+  return (
+    <>
+      {ReactDOM.createPortal(
+        <Backdrop onClose={props.onClose} />,
+        portalElement
+      )}
+      {ReactDOM.createPortal(
+        <ModalOverlay>{props.children}</ModalOverlay>,
+        portalElement
+      )}
+    </>
+  );
 };
 
 export default MovieDetailsModal;
