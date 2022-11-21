@@ -15,7 +15,7 @@ export const AuthContextCustom = ({children})=> {
 
     const getArrayMoviesSearching = (arrayMovies)=> {
 
-        setFilms(arrayMovies)
+        setFilms([arrayMovies])
         console.log(arrayMovies, films)
     }
     

@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useState, useContext } from "react";
+import { useState, useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Loading from "../Loading/Loading";
@@ -19,12 +19,10 @@ export default function Slider({data}) {
 
   const [displayDetails, setDisplayDetails] = useState({display: false, details: []});
 
-  const {films} = useContext(AuthContext)
-  console.log(films)
+  // const {films} = useContext(AuthContext)
+  // console.log(films)
 
   const navigation = useNavigate()
-
-  console.log(displayDetails)
   
   const closeModal = ()=> {
     setDisplayDetails({display: false})
@@ -64,9 +62,8 @@ export default function Slider({data}) {
         className={styles.mySwiper}
       >
 
-        {films.map((m)=> {
+        {data ? data.map((m)=> {
           return (
-
             <>
             <SwiperSlide onClick={()=> setDisplayDetails({display: true, details: [m.Title, m.Poster, m.Year]})} key={m.Title} className={styles.swiper}>
               <img className={styles.poster} alt="poster" src={m.Poster}/>
@@ -77,7 +74,9 @@ export default function Slider({data}) {
   
             </>
           )
-        })}
+        }): <SwiperSlide>
+            <Loading/>
+          </SwiperSlide>}
         
  
       </Swiper>

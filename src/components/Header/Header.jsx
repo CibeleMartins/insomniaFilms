@@ -10,35 +10,35 @@ import searchIcon from '../../assets/searchIcon.svg';
 
 const Header = ({onGetFilms})=> {
 
-    // const [search, setSearch] =  useState([]);
-    // const [films, setFilms] = useState([]);
+    const [search, setSearch] =  useState([]);
+    const [films, setFilms] = useState([]);
 
-    const context = useContext(AuthContext)
+    // const context = useContext(AuthContext)
 
-    const movieValue = useRef();
+    // const movieValue = useRef();
 
-    const changeSearchHandler = ()=> {
+    const changeSearchHandler = (event)=> {
 
-        // setSearch(event.target.value);
-        console.log(movieValue.current.value)
-        context.getMovieValueInput(movieValue.current.value)
+        setSearch(event.target.value);
+        // console.log(movieValue.current.value)
+        // context.getMovieValueInput(movieValue.current.value)
     };
 
-    // const getData = (data)=> {
-    //     console.log(data.Search)
-    //     setFilms(data.Search)
-    //     console.log(films)
+    const getData = (data)=> {
+        console.log(data.Search)
+        setFilms(data.Search)
+        console.log(films)
 
-    //     onGetFilms(films)
+        onGetFilms(films)
 
-    // };
+    };
 
-    // const apiKey = process.env.REACT_APP_KEY_API_OMDB
-    // const { sendRequest } = useHttp2({url:`https://www.omdbapi.com/?s=${search}&apikey=${apiKey}`}, getData)
+    const apiKey = process.env.REACT_APP_KEY_API_OMDB
+    const { sendRequest } = useHttp2({url:`https://www.omdbapi.com/?s=${search}&apikey=${apiKey}`}, getData)
 
-    // useEffect(()=> {
-    //     sendRequest()
-    // }, [sendRequest, search])
+    useEffect(()=> {
+        sendRequest()
+    }, [sendRequest, search])
 
     return (
         <HStack
@@ -57,10 +57,10 @@ const Header = ({onGetFilms})=> {
             justifyContent="center"
             padding={40}>
                 <Input
-                ref={movieValue}
+                // ref={movieValue}
                 float="left"
                 onChange={changeSearchHandler}
-                // value={search}
+                value={search}
                 className={styles.input} 
                 type='text' 
                 placeholder='Pesquise o que voce deseja assistir'/>
