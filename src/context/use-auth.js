@@ -12,7 +12,7 @@ export const AuthContextCustom = ({children})=> {
 
     // const [search, setSearch] = useState('');
     // const [films, setFilms] = useState([]);
-    const [detailsMovie, setDetailsMovie] = useState([]);
+    const [detailsMovie, setDetailsMovie] = useState({display: false, details: []});
     
     // const getArrayMoviesSearching = (arrayMovies)=> {
 
@@ -44,7 +44,8 @@ export const AuthContextCustom = ({children})=> {
 
     return <AuthContext.Provider
     value={{
-        getDetailsMovie
+        getDetailsMovie,
+        detailsMovie
     }}>
              {children}
         </AuthContext.Provider>

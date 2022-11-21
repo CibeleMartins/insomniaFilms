@@ -19,6 +19,8 @@ export default function Slider({data}) {
 
   const [displayDetails, setDisplayDetails] = useState({display: false, details: []});
 
+  const ctx = useContext(AuthContext);
+
 
   // const {films} = useContext(AuthContext)
   // console.log(films)
@@ -28,6 +30,8 @@ export default function Slider({data}) {
   const closeModal = ()=> {
     setDisplayDetails({display: false})
   }
+
+  ctx.getDetailsMovie(displayDetails)
 
   return (
 
