@@ -33,19 +33,10 @@
     box-sizing: border-box;
   }
   
-  .result-message {
-    line-height: 22px;
-    font-size: 16px;
-  }
-  
   .result-message a {
     color: rgb(89, 111, 214);
     font-weight: 600;
     text-decoration: none;
-  }
-  
-  .hidden {
-    display: none;
   }
   
   #card-error {

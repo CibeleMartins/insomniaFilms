@@ -80,8 +80,6 @@ export default function CheckoutForm() {
   };
 
   return (
-
-    <div>
     <form id="payment-form" onSubmit={handleSubmit}>
       <CardElement
         id="card-element"
@@ -104,16 +102,16 @@ export default function CheckoutForm() {
         </div>
       )}
       {/* Show a success message upon completion */}
-      {/* <p className={succeeded ? "result-message" : "result-message hidden"}>
-        Payment succeeded, see the result in your
+
+      {succeeded === true ?  <p className="result-message">
+        Pagamento efetuado com sucesso!
         <a
           href={`https://dashboard.stripe.com/test/payments`}
         >
           {" "}
           Stripe dashboard.
-        </a> Refresh the page to pay again.
-      </p> */}
+        </a> Enviaremos um link no seu e-mail para assistir o filme ;)
+      </p> : null }
     </form>
-    </div>
   );
 }

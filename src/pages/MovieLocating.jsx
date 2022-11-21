@@ -33,14 +33,21 @@ export default function MovieLocating() {
   const [cpf, setCpf] = useState('');
   const [email, setEmail] = useState('');
 
+  const [paymentSuccess, setPaymentSuccess] = useState('');
+
   const context = useContext(AuthContext);
 
   const price = `R$ ${context.detailsMovie.details[3]},00`
 
-
   const publicKey = process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY;
   const idService = process.env.REACT_APP_ID_EMAIL_JS;
   const template = process.env.REACT_APP_TEMPLATE_EMAIL_JS;
+
+  const getPaymentSuccess = (state)=> {
+
+    console.log(state)
+    setPaymentSuccess(state)
+  }
 
   const sendEmailLinkMovie = (e)=> {
 
@@ -113,7 +120,7 @@ export default function MovieLocating() {
 
       <HStack>
           <Elements stripe={promise}>
-            <CheckoutForm />
+            <CheckoutForm onGetSuccessPayment={getPaymentSuccess}/>
           </Elements>
       </HStack>
     </HStack>
