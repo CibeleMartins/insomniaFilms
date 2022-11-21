@@ -1,5 +1,6 @@
-// hooks
+//libs and hooks
 import React, { useContext } from "react";
+import emailjs from "@emailjs/browser"
 
 // context
 import { AuthContext } from "../context/use-auth";
@@ -36,14 +37,16 @@ export default function MovieLocating() {
         display="flex"
         w="100%"
         h="30vh">
-          <VStack
+          <form className={styles.formLocating}>
+          {/* <VStack
           w="50%"
           display="flex"
-          alignItems="flex-start">
+          alignItems="flex-start"> */}
             <Input placeholder="Nome completo" />
             <Input placeholder="CPF" />
             <Input placeholder="E-mail" />
-          </VStack>
+          {/* </VStack> */}
+          </form>
 
           <HStack
           w="50%">
