@@ -31,7 +31,7 @@ import { AuthContext } from "../context/use-auth";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import { Center, VStack, HStack, Text } from "@chakra-ui/react";
-import CheckoutForm from "../components/PaymentForm/CheckoutForm";
+import CheckoutForm from "../components/CheckoutForm/CheckoutForm";
 import Input from "../components/Input/Input";
 import CustomButton from "../components/Button/Button";
 import styles from "./MovieLocating.module.css";

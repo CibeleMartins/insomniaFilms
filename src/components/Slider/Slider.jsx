@@ -21,7 +21,6 @@ export default function Slider({data}) {
 
   const ctx = useContext(AuthContext);
 
-
   // const {films} = useContext(AuthContext)
   // console.log(films)
 
@@ -30,8 +29,6 @@ export default function Slider({data}) {
   const closeModal = ()=> {
     setDisplayDetails({display: false})
   }
-
-  ctx.getDetailsMovie(displayDetails)
 
   return (
 
@@ -73,7 +70,7 @@ export default function Slider({data}) {
             <>
             <SwiperSlide onClick={()=> setDisplayDetails({display: true, details: [m.title, m.poster, m.year, m.price]})} key={m.id} className={styles.swiper}>
               <img className={styles.poster} alt="poster" src={m.poster}/>
-
+                {ctx.getDetailsMovie(displayDetails)}
               <p>{m.title}</p>
             </SwiperSlide>
 
