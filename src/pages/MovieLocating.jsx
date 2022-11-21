@@ -1,5 +1,5 @@
 //libs and hooks
-import React, { useContext, useRef } from "react";
+import React, { useContext, useState } from "react";
 import emailjs from "@emailjs/browser"
 
 // context
@@ -26,34 +26,65 @@ const promise = loadStripe(
   "pk_test_51M6MSDKiFavfq3oOF6PY8eIDN7JLP9w3p18LQqWDXgTufLpMMcooXpasef1CFZTzhmp6KKeIST902bNisN81eX0x00JUaiOZW8"
 );
 
-const sendEmailLinkMovie = (e)=> {
-
-  e.preventDefault()
-}
-
 
 export default function MovieLocating() {
 
-  const completeName = useRef();
-  const cpf = useRef();
-  const email = useRef();
+  const[ completeName, setCompleteName ]= useState('');
+  const [cpf, setCpf] = useState('');
+  const [email, setEmail] = useState('');
 
   const context = useContext(AuthContext);
 
-  console.log(context.detailsMovie.details);
+  const price = `R$ ${context.detailsMovie.details[3]},00`
+
+
+  const publicKey = process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY;
+  const idService = process.env.REACT_APP_ID_EMAIL_JS;
+  const template = process.env.REACT_APP_TEMPLATE_EMAIL_JS;
+
+  const sendEmailLinkMovie = (e)=> {
+
+    e.preventDefault()
+
+    if (completeName === '' || cpf === ''|| email === '') {
+
+      alert("Preencha todos os campos, por favor")
+
+      return;
+    }
+    const templateParams = {
+      to_name: "Insomnia Films",
+      from_name: completeName,
+      message: `Você locou o filme: ${context.detailsMovie.details[0]} 
+      Valor pago: R$ ${context.detailsMovie.details[3]},00`,
+      emailUser: email
+    }
+
+    emailjs.send(idService, template, templateParams, publicKey).then(response => {
+      console.log("Email enviado com sucesso!", response.status, response.text)
+
+      setCompleteName('')
+      setCpf('')
+      setEmail('')
+
+    }, (error)=> {
+        console.log(error)
+    })
+  }
+ 
 
   return (
-    <Center w="100%" h="100vh" className="gradient">
-      <div className={styles.container}>
+    <HStack display="flex" justifyContent="space-evenly" w="100%" h="100vh" className="gradient">
+      <form onSubmit={sendEmailLinkMovie} className={styles.container}>
         <HStack 
         display="flex"
         w="100%"
         h="30vh">
-          <form onSubmit={sendEmailLinkMovie} className={styles.formLocating}>
-            <Input ref={completeName} placeholder="Nome completo" />
-            <Input ref={cpf} placeholder="CPF" />
-            <Input ref={email} placeholder="E-mail" />
-          </form>
+          <div className={styles.formLocating}>
+            <Input onChange={(e)=> setCompleteName(e.target.value)} value={completeName} placeholder="Nome completo" />
+            <Input onChange={(e)=> setCpf(e.target.value)} value={cpf} placeholder="CPF" />
+            <Input onChange={(e)=> setEmail(e.target.value)} value={email} placeholder="E-mail" />
+          </div>
 
           <HStack
           w="50%">
@@ -65,23 +96,26 @@ export default function MovieLocating() {
             </HStack>
             <VStack
             w="50%"
-            h="200px"
-            justifyContent="space-around"
-            disply="flex">
+            h="150px"
+            justifyContent="space-evenly"
+            display="flex">
               <Text
               textAlign="center"
               fontSize={30}>{context.detailsMovie.details[0]}</Text>
               <Text>{context.detailsMovie.details[2]}</Text>
-              <Text>{context.detailsMovie.details[3]}</Text>
+              <Text>{price}</Text>
             </VStack>
           </HStack>
         </HStack>
-        <Elements stripe={promise}>
-          <CheckoutForm />
-        </Elements>
+        <CustomButton
+        text="Finalizar e locar filme"/>
+      </form>
 
-        <CustomButton text="Finalizar e locar filme" />
-      </div>
-    </Center>
+      <HStack>
+          <Elements stripe={promise}>
+            <CheckoutForm />
+          </Elements>
+      </HStack>
+    </HStack>
   );
 }

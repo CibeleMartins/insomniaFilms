@@ -80,6 +80,8 @@ export default function CheckoutForm() {
   };
 
   return (
+
+    <div>
     <form id="payment-form" onSubmit={handleSubmit}>
       <CardElement
         id="card-element"
@@ -112,5 +114,6 @@ export default function CheckoutForm() {
         </a> Refresh the page to pay again.
       </p> */}
     </form>
+    </div>
   );
 }

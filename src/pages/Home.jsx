@@ -56,7 +56,7 @@ const Home = () => {
         title: films[filmKey].Title,
         poster: films[filmKey].Poster,
         year: films[filmKey].Year,
-        price: `Preço: R$ ${randomNumber}`,
+        price: randomNumber,
       });
     }
 

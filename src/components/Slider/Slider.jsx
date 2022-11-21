@@ -34,6 +34,8 @@ export default function Slider({ data }) {
     setDisplayDetails({ display: false });
   };
 
+  const price = `R$ ${displayDetails.details[3]},00`
+
   return (
     <>
       {/* modal */}
@@ -46,7 +48,7 @@ export default function Slider({ data }) {
               <div className={styles.details}>
                 <h2>{displayDetails.details[0]}</h2>
                 <h3>{displayDetails.details[2]}</h3>
-                <h3>{displayDetails.details[3]}</h3>
+                <h3>{price}</h3>
               </div>
 
               <Button
