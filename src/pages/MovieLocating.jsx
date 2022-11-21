@@ -51,21 +51,35 @@ export default function MovieLocating() {
   return (
     <Center w="100%" h="100vh" className="gradient">
       <div className={styles.container}>
-        <HStack className={styles.form}>
-          <VStack>
+        <HStack 
+        display="flex"
+        w="100%"
+        h="30vh">
+          <VStack
+          w="50%"
+          display="flex"
+          alignItems="flex-start">
             <Input placeholder="Nome completo" />
             <Input placeholder="CPF" />
             <Input placeholder="E-mail" />
           </VStack>
 
           <HStack
-          w="30%">
-            <HStack>
+          w="50%">
+            <HStack
+            w="50%"
+            display="flex"
+            justifyContent="center">
               <img className={styles.posterFilm} alt="posterFilme" src={context.detailsMovie.details[1]} />
             </HStack>
             <VStack
-            w="40%">
-              <Text>{context.detailsMovie.details[0]}</Text>
+            w="50%"
+            h="200px"
+            justifyContent="space-around"
+            disply="flex">
+              <Text
+              textAlign="center"
+              fontSize={30}>{context.detailsMovie.details[0]}</Text>
               <Text>{context.detailsMovie.details[2]}</Text>
               <Text>{context.detailsMovie.details[3]}</Text>
             </VStack>
