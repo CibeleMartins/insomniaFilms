@@ -1,9 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Loading from "../Loading/Loading";
 import MovieDetailsModal from "../MovieDetails/MovieDetails";
+import { AuthContext } from "../../context/use-auth";
 
 import "swiper/css";
 import "swiper/css/effect-cards";
@@ -17,6 +18,9 @@ import { HStack, Button } from "@chakra-ui/react";
 export default function Slider({data}) {
 
   const [displayDetails, setDisplayDetails] = useState({display: false, details: []});
+
+  const {films} = useContext(AuthContext)
+  console.log(films)
 
   const navigation = useNavigate()
 
@@ -60,7 +64,7 @@ export default function Slider({data}) {
         className={styles.mySwiper}
       >
 
-        {data ? data.map((m)=> {
+        {films.map((m)=> {
           return (
 
             <>
@@ -73,9 +77,7 @@ export default function Slider({data}) {
   
             </>
           )
-        }) : <SwiperSlide>
-            <Loading/>
-          </SwiperSlide>}
+        })}
         
  
       </Swiper>

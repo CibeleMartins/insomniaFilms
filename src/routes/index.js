@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter,Route, Routes } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 import Home from "../pages/Home";
@@ -15,12 +15,12 @@ const RoutesApp = () => {
   }, []);
 
   return (
-    <>
+    <BrowserRouter>
       <Routes>
         <Route exact path="/home" element={isLoading ? <Load /> : <Home />} />
         <Route exact path="/locarFilme" element={<MovieLocating/>} />
       </Routes>
-    </>
+    </BrowserRouter>
   );
 };
 

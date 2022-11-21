@@ -38,15 +38,15 @@ const Home = ()=> {
     //   }, 600);
     // };
     
-    const getFilmsInHeader = (films)=> {
+    // const getFilmsInHeader = (films)=> {
 
-      setFilms(films)
+    //   setFilms(films)
 
-    };
+    // };
 
     return (
         <>
-        <Header onGetFilms={getFilmsInHeader}/>
+        <Header/>
         <VStack
         h="100vh"
         width="100%"
@@ -77,7 +77,7 @@ const Home = ()=> {
                 </motion.div>
 
 
-                  <Slider data={films}/>
+                  <Slider/>
             </HStack>
         </VStack>
         </>

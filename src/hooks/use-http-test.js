@@ -25,7 +25,7 @@ const useHttp2 = (resquestConfig, applyData)=> {
           }
     
           const data = await response.json();
-        //   console.log(data)
+          // console.log(data)
           applyData(data)
 
         } catch (err) {
