@@ -68,7 +68,7 @@ export default function Slider({ data }) {
           modules={[EffectCards]}
           className={styles.mySwiper}
         >
-          {data ? (
+          {data.length !== 0 ? 
             data.map((m) => {
               return (
                 <>
@@ -93,11 +93,11 @@ export default function Slider({ data }) {
                 </>
               );
             })
-          ) : (
+           : 
             <SwiperSlide>
               <Loading />
             </SwiperSlide>
-          )}
+          }
         </Swiper>
       </div>
     </>
