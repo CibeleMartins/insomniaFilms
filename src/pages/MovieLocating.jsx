@@ -58,7 +58,12 @@ export default function MovieLocating() {
       alert("Preencha todos os campos, por favor")
 
       return;
+    } else if (paymentSuccess === false) {
+
+      alert("Realize o pagamento antes de enviar o formulário!")
+      return;
     }
+
     const templateParams = {
       to_name: "Insomnia Films",
       from_name: completeName,

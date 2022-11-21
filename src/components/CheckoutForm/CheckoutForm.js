@@ -6,7 +6,7 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 import "./CheckoutForm.module.css";
 
-export default function CheckoutForm() {
+export default function CheckoutForm({onGetSuccessPayment}) {
   const [succeeded, setSucceeded] = useState(false);
   const [error, setError] = useState(null);
   const [processing, setProcessing] = useState("");
@@ -78,6 +78,8 @@ export default function CheckoutForm() {
       setSucceeded(true);
     }
   };
+
+  onGetSuccessPayment(succeeded)
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
