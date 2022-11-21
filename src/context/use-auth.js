@@ -12,7 +12,7 @@ export const AuthContextCustom = ({children})=> {
 
     const [search, setSearch] = useState('');
     const [films, setFilms] = useState([]);
-
+    
     const getArrayMoviesSearching = (arrayMovies)=> {
 
         setFilms([arrayMovies])

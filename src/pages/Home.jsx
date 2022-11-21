@@ -37,10 +37,23 @@ const Home = ()=> {
     //     setReplay(true);
     //   }, 600);
     // };
+
+    function getRandomInt(min, max) {
+      min = Math.ceil(min);
+      max = Math.floor(max);
+      return Math.floor(Math.random() * (max - min) + min);
+    }
     
     const getFilmsInHeader = (films)=> {
 
-      setFilms(films)
+      let loadedFilms = [];
+
+      for (const filmKey in films) {
+        loadedFilms.push({ id: filmKey, title: films[filmKey].Title, poster: films.Poster, year: films.Year, price: getRandomInt(0, 15) });
+      }
+
+      console.log(loadedFilms)
+      setFilms(loadedFilms)
 
     };
 

@@ -19,6 +19,7 @@ export default function Slider({data}) {
 
   const [displayDetails, setDisplayDetails] = useState({display: false, details: []});
 
+
   // const {films} = useContext(AuthContext)
   // console.log(films)
 
@@ -77,8 +78,6 @@ export default function Slider({data}) {
         }): <SwiperSlide>
             <Loading/>
           </SwiperSlide>}
-        
- 
       </Swiper>
       </div>
 
