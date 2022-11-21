@@ -46,10 +46,12 @@ const Home = ()=> {
     
     const getFilmsInHeader = (films)=> {
 
+      const randomNumber = getRandomInt(1, 10)
+
       let loadedFilms = [];
 
       for (const filmKey in films) {
-        loadedFilms.push({ id: filmKey, title: films[filmKey].Title, poster: films.Poster, year: films.Year, price: getRandomInt(0, 15) });
+        loadedFilms.push({ id: filmKey, title: films[filmKey].Title, poster: films[filmKey].Poster, year: films[filmKey].Year, price: `Preço: R$ ${randomNumber}` });
       }
 
       console.log(loadedFilms)

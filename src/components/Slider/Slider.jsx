@@ -45,6 +45,7 @@ export default function Slider({data}) {
           <div className={styles.details}>
             <h2>{displayDetails.details[0]}</h2>
             <h3>{displayDetails.details[2]}</h3>
+            <h3>{displayDetails.details[3]}</h3>
           </div>
         
 
@@ -66,10 +67,10 @@ export default function Slider({data}) {
         {data ? data.map((m)=> {
           return (
             <>
-            <SwiperSlide onClick={()=> setDisplayDetails({display: true, details: [m.Title, m.Poster, m.Year]})} key={m.Title} className={styles.swiper}>
-              <img className={styles.poster} alt="poster" src={m.Poster}/>
+            <SwiperSlide onClick={()=> setDisplayDetails({display: true, details: [m.title, m.poster, m.year, m.price]})} key={m.id} className={styles.swiper}>
+              <img className={styles.poster} alt="poster" src={m.poster}/>
 
-              <p>{m.Title}</p>
+              <p>{m.title}</p>
             </SwiperSlide>
 
   
