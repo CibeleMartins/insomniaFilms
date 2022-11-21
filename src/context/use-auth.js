@@ -10,35 +10,41 @@ export const AuthContext = createContext({
 
 export const AuthContextCustom = ({children})=> {
 
-    const [search, setSearch] = useState('');
-    const [films, setFilms] = useState([]);
+    // const [search, setSearch] = useState('');
+    // const [films, setFilms] = useState([]);
+    const [detailsMovie, setDetailsMovie] = useState([]);
     
-    const getArrayMoviesSearching = (arrayMovies)=> {
+    // const getArrayMoviesSearching = (arrayMovies)=> {
 
-        setFilms([arrayMovies])
-        console.log(arrayMovies, films)
+    //     setFilms([arrayMovies])
+    //     console.log(arrayMovies, films)
+    // }
+    
+    // const getMovieValueInput = (movieValue)=> {
+    
+    //   setSearch(movieValue)
+    //     console.log(movieValue)
+    // }
+
+
+    // const apiKey = process.env.REACT_APP_KEY_API_OMDB
+    // const { sendRequest } = useHttp2({url:`https://www.omdbapi.com/?s=${search}&apikey=${apiKey}`}, getArrayMoviesSearching)
+
+
+    // useEffect(()=> {
+    //     sendRequest()
+    // }, [sendRequest])
+
+    const getDetailsMovie = (stateDetails)=> {
+
+        console.log(stateDetails)
+        setDetailsMovie(stateDetails)
     }
-    
-    const getMovieValueInput = (movieValue)=> {
-    
-      setSearch(movieValue)
-        console.log(movieValue)
-    }
-
-
-    const apiKey = process.env.REACT_APP_KEY_API_OMDB
-    const { sendRequest } = useHttp2({url:`https://www.omdbapi.com/?s=${search}&apikey=${apiKey}`}, getArrayMoviesSearching)
-
-
-    useEffect(()=> {
-        sendRequest()
-    }, [sendRequest])
   
 
     return <AuthContext.Provider
     value={{
-        getMovieValueInput,
-        films
+        getDetailsMovie
     }}>
              {children}
         </AuthContext.Provider>
