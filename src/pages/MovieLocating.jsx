@@ -1,5 +1,5 @@
 //libs and hooks
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import emailjs from "@emailjs/browser"
 
 // context
@@ -26,10 +26,22 @@ const promise = loadStripe(
   "pk_test_51M6MSDKiFavfq3oOF6PY8eIDN7JLP9w3p18LQqWDXgTufLpMMcooXpasef1CFZTzhmp6KKeIST902bNisN81eX0x00JUaiOZW8"
 );
 
+const sendEmailLinkMovie = (e)=> {
+
+  e.preventDefault()
+}
+
+
 export default function MovieLocating() {
+
+  const completeName = useRef();
+  const cpf = useRef();
+  const email = useRef();
+
   const context = useContext(AuthContext);
 
   console.log(context.detailsMovie.details);
+
   return (
     <Center w="100%" h="100vh" className="gradient">
       <div className={styles.container}>
@@ -37,15 +49,10 @@ export default function MovieLocating() {
         display="flex"
         w="100%"
         h="30vh">
-          <form className={styles.formLocating}>
-          {/* <VStack
-          w="50%"
-          display="flex"
-          alignItems="flex-start"> */}
-            <Input placeholder="Nome completo" />
-            <Input placeholder="CPF" />
-            <Input placeholder="E-mail" />
-          {/* </VStack> */}
+          <form onSubmit={sendEmailLinkMovie} className={styles.formLocating}>
+            <Input ref={completeName} placeholder="Nome completo" />
+            <Input ref={cpf} placeholder="CPF" />
+            <Input ref={email} placeholder="E-mail" />
           </form>
 
           <HStack
