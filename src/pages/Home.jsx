@@ -37,26 +37,6 @@ const Home = () => {
     return Math.floor(Math.random() * (max - min) + min);
   }
 
-  // const getFilms = (films) => {
-  //   console.log('filmes da pesquisa na Home', films)
-  //   const randomNumber = getRandomInt(1, 10);
-
-  //   let loadedFilms = [];
-
-  //   for (const filmKey in films) {
-  //     loadedFilms.push({
-  //       id: filmKey,
-  //       title: films[filmKey].Title,
-  //       poster: films[filmKey].Poster,
-  //       year: films[filmKey].Year,
-  //       price: randomNumber,
-  //     });
-  //   }
-
-  //   // console.log(loadedFilms)
-  //   setFilms(loadedFilms);
-  // };
-
   useEffect(()=> {
 
     const randomNumber = getRandomInt(1, 10);
@@ -74,8 +54,7 @@ const Home = () => {
         });
       }
     }
-
-    console.log('filmes pesquisado na Home e formatados', loadedFilms)
+    // console.log('filmes pesquisado na Home e formatados', loadedFilms)
     setFilms(loadedFilms);
   }, [
     ctx.movies

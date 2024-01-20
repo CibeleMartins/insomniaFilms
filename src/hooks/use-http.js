@@ -12,7 +12,7 @@ const useHttp2 = (resquestConfig, applyData)=> {
         setError(null);
         
         try {
-          console.log('fez requisicao do filme pela busca')
+          // console.log('fez requisicao do filme pela busca')
           const response = await fetch(
             resquestConfig.url, {
                 method: resquestConfig.method ? resquestConfig.method : 'GET',
@@ -28,8 +28,8 @@ const useHttp2 = (resquestConfig, applyData)=> {
           // eslint-disable-next-line react-hooks/exhaustive-deps
           data = await response.json();
           setIsLoading(false);
-          console.log('chegou o filme da busca', data)
-          applyData(data)
+          // console.log('chegou o filme da busca', data)
+          // applyData(data)
           
           return {
             isLoading,

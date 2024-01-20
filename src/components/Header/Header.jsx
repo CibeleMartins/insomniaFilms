@@ -13,40 +13,31 @@ import searchIcon from "../../assets/searchIcon.svg";
 import { AuthContext } from "../../context/use-auth";
 
 const Header = ({ onGetFilms }) => {
+  const apiKey = process.env.REACT_APP_OMDB_API_KEY;
   const [search, setSearch] = useState([]);
-  const [films, setFilms] = useState([]);
-
   const ctx = useContext(AuthContext)
   
   const changeSearchHandler = (event) => {
     setSearch(event.target.value);
   };
 
-  const getData = async (data) => {
-    console.log('filmes pesquisa no componente Header', data.Search)
-    setFilms(data.Search);
-  };
-
-  const apiKey = process.env.REACT_APP_OMDB_API_KEY;
   const { sendRequest } = useHttp2(
-    { url: `https://www.omdbapi.com/?s=${search}&apikey=${apiKey}` },
-    getData
+    { url: `https://www.omdbapi.com/?s=${search}&apikey=${apiKey}` }
   );
 
   useEffect(() => {
     const result = sendRequest();
-    console.log('filmes no useEffect ', result)
-    result.then((resp)=> {console.log('retorno promise no useEffect', resp)
-
+    // console.log('filmes no useEffect ', result)
+    result.then((resp)=> {
+    // console.log('retorno promise no useEffect', resp)
     if(resp.data.Search.length > 0) {
       ctx.setMovies(resp.data.Search)
     } 
     }).catch(()=> {
       ctx.setMovies([])
-      console.log('filmes pesquisados dentro useEffect apos apagar tudo', films)
-      console.log('filmes pesquisados do AuthContext dentro useEffect apos apagar tudo', ctx.movies)
+      // console.log('filmes pesquisados dentro useEffect apos apagar tudo', films)
+      // console.log('filmes pesquisados do AuthContext dentro useEffect apos apagar tudo', ctx.movies)
     })
-    
   }, [sendRequest, search]);
 
   return (
