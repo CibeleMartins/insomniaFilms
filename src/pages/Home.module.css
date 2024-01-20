@@ -1,0 +1,15 @@
+.textMoviesContainer {
+    justify-content: center;
+    @media(min-width: 1400px) {
+    }
+}
+
+.slider {
+    visibility: hidden !important;
+    @media(min-width: 1400px) {
+        display: flex;
+        width: 50%;
+        justify-content: center;
+        visibility: visible !important;
+    }
+}

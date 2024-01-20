@@ -1,6 +1,6 @@
 // libs and hooks
 import { useContext, useEffect, useState } from "react";
-import { VStack, HStack } from "@chakra-ui/react";
+import { VStack, HStack, Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 // components
@@ -8,7 +8,7 @@ import AnimatedText from "../components/AnimatedText/AnimatedText";
 import Slider from "../components/Slider/Slider";
 import Header from "../components/Header/Header";
 import { AuthContext } from "../context/use-auth";
-
+import styles from './Home.module.css'
 const Home = () => {
   const [films, setFilms] = useState([]);
 
@@ -68,9 +68,8 @@ const Home = () => {
         width="100%"
         className="gradient"
         display="flex"
-        // alignItems="center"
       >
-        <HStack w="100%" h="100vh" display="flex" spacing="15%">
+        <HStack className={styles.textMoviesContainer} w="100%" h="100%" display="flex" spacing="15%">
           <motion.div
             className="motionDiv"
             initial="hidden"
@@ -83,13 +82,14 @@ const Home = () => {
                 return <AnimatedText {...item} key={index} />;
               })}
             </div>
-            {/* <button onClick={handleReplay}>
-                    Replay <span>⟲</span>
-                </button> */}
           </motion.div>
-
-          <Slider data={films} />
-        </HStack>
+          
+          <div className={styles.slider}>
+            <Slider data={films} />
+          </div>
+          
+        </HStack> 
+ 
       </VStack>
     </>
   );

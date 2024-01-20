@@ -75,9 +75,6 @@ h2 {
   margin: 0;
 }
 
-.word-wrapper {
-  white-space: nowrap;
-}
 
 .motionDiv {
   width: 50%;
@@ -89,6 +86,7 @@ h2 {
 
 .swiper-slide {
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: center;
   border-radius: 18px;
