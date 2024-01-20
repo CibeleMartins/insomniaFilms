@@ -8,7 +8,7 @@ import { AuthContext } from "../context/use-auth";
 // stripe elements
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import { Center, VStack, HStack, Text } from "@chakra-ui/react";
+import { VStack, HStack, Text } from "@chakra-ui/react";
 
 // components
 import CheckoutForm from "../components/CheckoutForm/CheckoutForm";
@@ -18,14 +18,9 @@ import CustomButton from "../components/Button/Button";
 // styles
 import styles from "./MovieLocating.module.css";
 
-// Make sure to call loadStripe outside of a component’s render to avoid
-// recreating the Stripe object on every render.
-// This is your test publishable API key.
-
 const promise = loadStripe(
   "pk_test_51M6MSDKiFavfq3oOF6PY8eIDN7JLP9w3p18LQqWDXgTufLpMMcooXpasef1CFZTzhmp6KKeIST902bNisN81eX0x00JUaiOZW8"
 );
-
 
 export default function MovieLocating() {
 

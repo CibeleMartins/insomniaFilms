@@ -1,7 +1,7 @@
 // libs and hooks
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCards } from "swiper";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 // context
@@ -24,10 +24,6 @@ export default function Slider({ data }) {
   });
 
   const ctx = useContext(AuthContext);
-
-  // const {films} = useContext(AuthContext)
-  // console.log(films)
-
   const navigation = useNavigate();
 
   const closeModal = () => {
@@ -73,8 +69,7 @@ export default function Slider({ data }) {
           {data.length !== 0 ? 
             data.map((m) => {
               return (
-                <>
-                  <SwiperSlide
+                <SwiperSlide
                     onClick={() =>
                       setDisplayDetails({
                         display: true,
@@ -89,10 +84,9 @@ export default function Slider({ data }) {
                       alt="poster"
                       src={m.poster}
                     />
-                    {ctx.getDetailsMovie(displayDetails)}
+                    {/* {ctx.getDetailsMovie(displayDetails)} */}
                     <p>{m.title}</p>
                   </SwiperSlide>
-                </>
               );
             })
            : 

@@ -1,9 +1,6 @@
 // libs
 import ReactDOM from "react-dom";
 
-// components
-import { Modal } from "@chakra-ui/react";
-
 // styles
 import classes from "./MovieDetailsModal.module.css";
 

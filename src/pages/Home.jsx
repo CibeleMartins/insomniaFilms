@@ -1,5 +1,5 @@
 // libs and hooks
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { VStack, HStack } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
@@ -7,12 +7,12 @@ import { motion } from "framer-motion";
 import AnimatedText from "../components/AnimatedText/AnimatedText";
 import Slider from "../components/Slider/Slider";
 import Header from "../components/Header/Header";
+import { AuthContext } from "../context/use-auth";
 
 const Home = () => {
-  // const [replay, setReplay] = useState(true);
-  // // Placeholder text data, as if from API
-
   const [films, setFilms] = useState([]);
+
+  const ctx = useContext(AuthContext)
 
   const placeholderText = [
     { type: "heading1", text: "A sua locadora online" },
@@ -31,42 +31,59 @@ const Home = () => {
     },
   };
 
-  // // Quick and dirt for the example
-  // const handleReplay = () => {
-  //   setReplay(!replay);
-  //   setTimeout(() => {
-  //     setReplay(true);
-  //   }, 600);
-  // };
-
   function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
   }
 
-  const getFilmsInHeader = (films) => {
+  // const getFilms = (films) => {
+  //   console.log('filmes da pesquisa na Home', films)
+  //   const randomNumber = getRandomInt(1, 10);
+
+  //   let loadedFilms = [];
+
+  //   for (const filmKey in films) {
+  //     loadedFilms.push({
+  //       id: filmKey,
+  //       title: films[filmKey].Title,
+  //       poster: films[filmKey].Poster,
+  //       year: films[filmKey].Year,
+  //       price: randomNumber,
+  //     });
+  //   }
+
+  //   // console.log(loadedFilms)
+  //   setFilms(loadedFilms);
+  // };
+
+  useEffect(()=> {
+
     const randomNumber = getRandomInt(1, 10);
 
     let loadedFilms = [];
 
-    for (const filmKey in films) {
-      loadedFilms.push({
-        id: filmKey,
-        title: films[filmKey].Title,
-        poster: films[filmKey].Poster,
-        year: films[filmKey].Year,
-        price: randomNumber,
-      });
+    if(ctx.movies !== undefined && ctx.movies.length > 0) {
+      for (const filmKey in ctx.movies) {
+        loadedFilms.push({
+          id: filmKey,
+          title: ctx.movies[filmKey].Title,
+          poster: ctx.movies[filmKey].Poster,
+          year: ctx.movies[filmKey].Year,
+          price: randomNumber,
+        });
+      }
     }
 
-    // console.log(loadedFilms)
+    console.log('filmes pesquisado na Home e formatados', loadedFilms)
     setFilms(loadedFilms);
-  };
+  }, [
+    ctx.movies
+  ])
 
   return (
     <>
-      <Header onGetFilms={getFilmsInHeader} />
+      <Header />
       <VStack
         h="100vh"
         width="100%"
