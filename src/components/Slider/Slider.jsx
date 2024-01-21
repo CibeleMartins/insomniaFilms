@@ -70,11 +70,16 @@ export default function Slider({ data }) {
             data.map((m) => {
               return (
                 <SwiperSlide
-                    onClick={() =>
+                    onClick={() => {
                       setDisplayDetails({
                         display: true,
                         details: [m.title, m.poster, m.year, m.price],
                       })
+                      ctx.getDetailsMovie({
+                        display: true,
+                        details: [m.title, m.poster, m.year, m.price],
+                      })
+                    }
                     }
                     key={m.id}
                     className={styles.swiper}
@@ -84,7 +89,7 @@ export default function Slider({ data }) {
                       alt="poster"
                       src={m.poster}
                     />
-                    {/* {ctx.getDetailsMovie(displayDetails)} */}
+                
                     <p>{m.title}</p>
                   </SwiperSlide>
               );

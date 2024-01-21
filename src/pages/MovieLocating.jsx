@@ -19,7 +19,7 @@ import CustomButton from "../components/Button/Button";
 import styles from "./MovieLocating.module.css";
 
 const promise = loadStripe(
-  "pk_test_51M6MSDKiFavfq3oOF6PY8eIDN7JLP9w3p18LQqWDXgTufLpMMcooXpasef1CFZTzhmp6KKeIST902bNisN81eX0x00JUaiOZW8"
+ process.env.REACT_APP_STRIPE_PK
 );
 
 export default function MovieLocating() {
@@ -120,7 +120,7 @@ export default function MovieLocating() {
 
       <HStack>
           <Elements stripe={promise}>
-            <CheckoutForm onGetSuccessPayment={getPaymentSuccess}/>
+            <CheckoutForm options={{mode: 'payment', amount: parseInt(price.replace("R$", "")).toFixed(2), currency: 'brl'}} onGetSuccessPayment={getPaymentSuccess}/>
           </Elements>
       </HStack>
     </HStack>

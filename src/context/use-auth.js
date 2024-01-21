@@ -11,6 +11,7 @@ export const AuthContextCustom = ({ children }) => {
   const [movies, setMovies]= useState([])
 
   const getDetailsMovie = (stateDetails) => {
+    console.log('Detalhes do filme a ser locado', stateDetails)
     setDetailsMovie(stateDetails);
   };
 

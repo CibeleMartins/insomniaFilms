@@ -6,33 +6,16 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 
 import "./CheckoutForm.module.css";
 
-export default function CheckoutForm({onGetSuccessPayment}) {
-  const [succeeded, setSucceeded] = useState(false);
+export default function CheckoutForm({onGetSuccessPayment, options}) {
+console.log('valor do filme a ser locado no form checkout',options.amount)
   const [error, setError] = useState(null);
-  const [processing, setProcessing] = useState("");
-  const [disabled, setDisabled] = useState(true);
-  const [clientSecret, setClientSecret] = useState("");
   const stripe = useStripe();
   const elements = useElements();
-
-  useEffect(() => {
-    // Create PaymentIntent as soon as the page loads
-    window
-      .fetch("/create-payment-intent", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
-      })
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setClientSecret(data.clientSecret);
-      });
-  }, []);
-
+  const [processing, setProcessing] = useState("");
+  const [disabled, setDisabled] = useState(true);
+  const [succeeded, setSucceeded] = useState(false);
+  const backendUrl = process.env.REACT_APP_AIRCODE_URL;
+  console.log('url aircode',backendUrl)
   const cardStyle = {
     style: {
       base: {
@@ -63,10 +46,36 @@ export default function CheckoutForm({onGetSuccessPayment}) {
     ev.preventDefault();
     setProcessing(true);
 
-    const payload = await stripe.confirmCardPayment(clientSecret, {
+    if (elements == null || stripe == null) {
+      return;
+    }
+
+    // Trigger form validation and wallet collection
+    const { error: submitError } = await elements.submit();
+    if (submitError?.message) {
+      // Show error to your customer
+      setError(submitError.message);
+      return;
+    }
+    //req backend
+    const res = await fetch(`${backendUrl}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        currency: options.currency,
+        amount: Math.round(options?.amount * 100),
+        paymentMethodType: "card"
+      }),
+    });
+    const { client_secret: clientSecret } = await res.json();
+    console.log('clientSecret', clientSecret)
+    const clientSecretString = clientSecret.toString()
+    const payload = await stripe.confirmCardPayment(clientSecretString, {
       payment_method: {
         card: elements.getElement(CardElement),
-      },
+      }
     });
 
     if (payload.error) {
@@ -76,10 +85,11 @@ export default function CheckoutForm({onGetSuccessPayment}) {
       setError(null);
       setProcessing(false);
       setSucceeded(true);
+      onGetSuccessPayment(succeeded)
     }
   };
 
-  onGetSuccessPayment(succeeded)
+
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
@@ -112,7 +122,7 @@ export default function CheckoutForm({onGetSuccessPayment}) {
         >
           {" "}
           Stripe dashboard.
-        </a> Enviaremos um link no seu e-mail para assistir o filme ;)
+        </a> Enviaremos um link no seu e-mail para assistir o filme ;
       </p> : null }
     </form>
   );

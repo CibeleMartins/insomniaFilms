@@ -28,7 +28,7 @@ const useHttp2 = (resquestConfig, applyData)=> {
           // eslint-disable-next-line react-hooks/exhaustive-deps
           data = await response.json();
           setIsLoading(false);
-          // console.log('chegou o filme da busca', data)
+          console.log('chegou o filme da busca', data)
           // applyData(data)
           
           return {
