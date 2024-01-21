@@ -11,6 +11,8 @@ import styles from "./Header.module.css";
 // images
 import searchIcon from "../../assets/searchIcon.svg";
 import { AuthContext } from "../../context/use-auth";
+import BouncingBall from "../BouncingButton/BouncingButton";
+import BouncingButton from "../BouncingButton/BouncingButton";
 
 const Header = ({ onGetFilms }) => {
   const apiKey = process.env.REACT_APP_OMDB_API_KEY;
@@ -47,8 +49,11 @@ const Header = ({ onGetFilms }) => {
       display="flex"
       alignItems="center"
       justifyContent="center"
+      zIndex={9999}
     >
+      <BouncingButton></BouncingButton>
       <InputGroup
+        className={styles.searchBar}
         position="relative"
         w="100%"
         display="flex"

@@ -1,0 +1,14 @@
+.btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: linear-gradient(45deg, #849B5C, #687466, #50D5B7, #067d68);
+    color: aliceblue;
+    margin-top: 20px;
+    display: flex !important;
+    @media(min-width: 1400px) {
+    display: none !important;
+  }
+}

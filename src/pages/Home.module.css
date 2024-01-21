@@ -1,3 +1,10 @@
+.verticalContainer {
+    height: 1200px !important;
+    @media(min-width: 1400px) {
+    height: 100vh !important;
+    }
+}
+
 .textMoviesContainer {
     justify-content: center;
     @media(min-width: 1400px) {
@@ -6,10 +13,23 @@
 
 .slider {
     visibility: hidden !important;
+    display: none !important;
     @media(min-width: 1400px) {
-        display: flex;
+        display: flex !important;
         width: 50%;
         justify-content: center;
         visibility: visible !important;
+    }
+}
+
+#sliderMobile {
+    visibility: visible !important;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    @media(min-width: 1400px) {
+        visibility: hidden !important;
+        display: none !important;
     }
 }

@@ -66,12 +66,12 @@ const Home = () => {
     <>
       <Header />
       <VStack
-        h="100vh"
+        id={styles.verticalContainer}
         width="100%"
         className="gradient"
         display="flex"
       >
-        <HStack className={styles.textMoviesContainer} w="100%" h="100%" display="flex" spacing="15%">
+        <HStack className={styles.textMoviesContainer} w="100%" h="100vh" display="flex" spacing="15%">
           <motion.div
             className="motionDiv"
             initial="hidden"
@@ -91,8 +91,11 @@ const Home = () => {
           </div>
           
         </HStack> 
- 
+        <HStack  id={styles.sliderMobile}>
+          <Slider data={films} />
+        </HStack>  
       </VStack>
+     
     </>
   );
 };
