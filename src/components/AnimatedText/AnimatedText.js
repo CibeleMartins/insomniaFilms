@@ -4,23 +4,19 @@ import { motion } from "framer-motion";
 
 // Word wrapper
 const Wrapper = (props) => {
-  // We'll do this to prevent wrapping of words using CSS
   return <span className="word-wrapper">{props.children}</span>;
 };
 
-// Map API "type" vaules to JSX tag names
 const tagMap = {
   paragraph: "p",
   heading1: "h1",
-  heading2: "h2",
+  heading2: "h1",
   heading3: "h2",
+  heading4: "h2",
+  heading5: "h2",
 };
 
-// AnimatedCharacters
-// Handles the deconstruction of each word and character to setup for the
-// individual character animations
 const AnimatedCharacters = (props) => {
-  // Framer Motion variant object, for controlling animation
   const item = {
     hidden: {
       y: "200%",

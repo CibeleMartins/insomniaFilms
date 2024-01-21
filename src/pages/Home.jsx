@@ -15,12 +15,14 @@ const Home = () => {
   const ctx = useContext(AuthContext)
 
   const placeholderText = [
-    { type: "heading1", text: "A sua locadora online" },
+    { type: "heading1", text: "A sua locadora" },
+    { type: "heading2", text: "online" },
     {
-      type: "heading2",
-      text: "Pra assistir quando quiser, em alta resolução",
+      type: "heading3",
+      text: "Pra assistir quando quiser",
     },
-    { type: "heading3", text: "E por um preço baixo" },
+    {type: "heading4", text: "Em alta resolução"},
+    { type: "heading5", text: "E por um preço baixo" },
   ];
 
   const container = {

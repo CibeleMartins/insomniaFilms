@@ -77,10 +77,21 @@ h2 {
 
 
 .motionDiv {
-  width: 50%;
+  width: 100%;
   height: 300px;
   padding-left: 5%;
   padding-bottom: 5%;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+
+  @media(min-width: 1400px) {
+    width: 50%;
+    height: 300px;
+    padding-left: 5%;
+    padding-bottom: 5%;
+    white-space: nowrap;
+}
 
 }
 
