@@ -98,6 +98,9 @@ const Home = () => {
             <Input placeholder="Digite o token de locação"/>
             <iframe title="movie" src="https://embedder.net/e/movie?tmdb=592662" frameborder="0" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>
           </VStack>
+          
+
+
         </HStack>  
       </VStack>
      
