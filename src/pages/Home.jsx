@@ -1,19 +1,17 @@
 // libs and hooks
 import { useContext, useEffect, useState } from "react";
-import { VStack, HStack, Box } from "@chakra-ui/react";
+import { VStack, HStack, Box, Heading, Input } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 // components
 import AnimatedText from "../components/AnimatedText/AnimatedText";
 import Slider from "../components/Slider/Slider";
 import Header from "../components/Header/Header";
-import { AuthContext } from "../context/use-auth";
+import { MovieContext } from "../context/use-movie";
 import styles from './Home.module.css'
 const Home = () => {
   const [films, setFilms] = useState([]);
-
-  const ctx = useContext(AuthContext)
-
+  const ctx = useContext(MovieContext)
   const placeholderText = [
     { type: "heading1", text: "A sua locadora" },
     { type: "heading2", text: "online" },
@@ -42,21 +40,19 @@ const Home = () => {
   useEffect(()=> {
 
     const randomNumber = getRandomInt(1, 10);
-
     let loadedFilms = [];
-
     if(ctx.movies !== undefined && ctx.movies.length > 0) {
       for (const filmKey in ctx.movies) {
         loadedFilms.push({
-          id: filmKey,
+          id: ctx.movies[filmKey].imdbID,
           title: ctx.movies[filmKey].Title,
           poster: ctx.movies[filmKey].Poster,
           year: ctx.movies[filmKey].Year,
           price: randomNumber,
+          type: ctx.movies[filmKey].Type
         });
       }
     }
-    // console.log('filmes pesquisado na Home e formatados', loadedFilms)
     setFilms(loadedFilms);
   }, [
     ctx.movies
@@ -71,11 +67,10 @@ const Home = () => {
         className="gradient"
         display="flex"
       >
-        <HStack className={styles.textMoviesContainer} w="100%" h="100vh" display="flex" spacing="15%">
+        <HStack className={styles.textMoviesContainer} w="100%" h="100vh" display="flex">
           <motion.div
             className="motionDiv"
             initial="hidden"
-            // animate="visible"
             animate={"visible"}
             variants={container}
           >
@@ -93,6 +88,16 @@ const Home = () => {
         </HStack> 
         <HStack  id={styles.sliderMobile}>
           <Slider data={films} />
+        </HStack>
+
+
+        <HStack w="100%" h="100vh" display="flex" justifyContent="center" alignItems="start">
+
+          <VStack>
+            <Heading>Quero assistir</Heading>
+            <Input placeholder="Digite o token de locação"/>
+            <iframe title="movie" src="https://embedder.net/e/movie?tmdb=592662" frameborder="0" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>
+          </VStack>
         </HStack>  
       </VStack>
      

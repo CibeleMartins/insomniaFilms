@@ -5,7 +5,7 @@ import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 // context
-import { AuthContext } from "../../context/use-auth";
+import { MovieContext } from "../../context/use-movie";
 
 // components
 import { HStack, Button } from "@chakra-ui/react";
@@ -23,19 +23,17 @@ export default function Slider({ data }) {
     details: [],
   });
 
-  const ctx = useContext(AuthContext);
+  const ctx = useContext(MovieContext);
   const navigation = useNavigate();
 
   const closeModal = () => {
     setDisplayDetails({ display: false });
   };
 
-  const price = `R$ ${displayDetails.details[3]},00`
-
   return (
     <>
       {/* modal */}
-      {displayDetails.display === true && (
+      {displayDetails.display === true ? (
         <MovieDetailsModal onClose={closeModal}>
           <HStack>
             <img alt="poster" src={displayDetails.details[1]} />
@@ -44,7 +42,7 @@ export default function Slider({ data }) {
               <div className={styles.details}>
                 <h2>{displayDetails.details[0]}</h2>
                 <h3>{displayDetails.details[2]}</h3>
-                <h3>{price}</h3>
+                <h3>R$ {displayDetails.details[3]},00</h3>
               </div>
 
               <Button
@@ -56,7 +54,8 @@ export default function Slider({ data }) {
             </div>
           </HStack>
         </MovieDetailsModal>
-      )}
+        
+      ): ''}
 
       {/* slider */}
       <div className={styles.main}>
@@ -79,6 +78,7 @@ export default function Slider({ data }) {
                         display: true,
                         details: [m.title, m.poster, m.year, m.price],
                       })
+                      ctx.canLocated(m.type, m.id)
                     }
                     }
                     key={m.id}

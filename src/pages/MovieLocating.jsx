@@ -3,12 +3,12 @@ import React, { useContext, useState } from "react";
 import emailjs from "@emailjs/browser"
 
 // context
-import { AuthContext } from "../context/use-auth";
+import { MovieContext } from "../context/use-movie";
 
 // stripe elements
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import { VStack, HStack, Text } from "@chakra-ui/react";
+import { VStack, HStack, Text, Stack } from "@chakra-ui/react";
 
 // components
 import CheckoutForm from "../components/CheckoutForm/CheckoutForm";
@@ -30,7 +30,7 @@ export default function MovieLocating() {
 
   const [paymentSuccess, setPaymentSuccess] = useState('');
 
-  const context = useContext(AuthContext);
+  const context = useContext(MovieContext);
 
   const price = `R$ ${context.detailsMovie.details[3]},00`
 
@@ -81,7 +81,7 @@ export default function MovieLocating() {
  
 
   return (
-    <HStack display="flex" justifyContent="space-evenly" w="100%" h="100vh" className="gradient">
+    <VStack flexDir="column-reverse" display="flex" justifyContent="space-evenly" w="100%" h="100vh" className="gradient">
       <form onSubmit={sendEmailLinkMovie} className={styles.container}>
         <HStack 
         display="flex"
@@ -123,6 +123,6 @@ export default function MovieLocating() {
             <CheckoutForm options={{mode: 'payment', amount: parseInt(price.replace("R$", "")).toFixed(2), currency: 'brl'}} onGetSuccessPayment={getPaymentSuccess}/>
           </Elements>
       </HStack>
-    </HStack>
+    </VStack>
   );
 }

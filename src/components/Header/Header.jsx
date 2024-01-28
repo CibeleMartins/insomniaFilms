@@ -3,42 +3,37 @@
 import React, { useState, useEffect, useContext} from "react";
 import { HStack, Input, InputGroup } from "@chakra-ui/react";
 // hook http
-import useHttp2 from "../../hooks/use-http";
+import useHttp from "../../hooks/use-http";
 
 // styles
 import styles from "./Header.module.css";
 
 // images
 import searchIcon from "../../assets/searchIcon.svg";
-import { AuthContext } from "../../context/use-auth";
-import BouncingBall from "../BouncingButton/BouncingButton";
+import { MovieContext } from "../../context/use-movie";
 import BouncingButton from "../BouncingButton/BouncingButton";
 
 const Header = ({ onGetFilms }) => {
   const apiKey = process.env.REACT_APP_OMDB_API_KEY;
   const [search, setSearch] = useState([]);
-  const ctx = useContext(AuthContext)
+  const ctx = useContext(MovieContext)
   
   const changeSearchHandler = (event) => {
     setSearch(event.target.value);
   };
 
-  const { sendRequest } = useHttp2(
+  const { sendRequest } = useHttp(
     { url: `https://www.omdbapi.com/?s=${search}&apikey=${apiKey}` }
   );
 
   useEffect(() => {
     const result = sendRequest();
-    // console.log('filmes no useEffect ', result)
     result.then((resp)=> {
-    // console.log('retorno promise no useEffect', resp)
     if(resp.data.Search.length > 0) {
       ctx.setMovies(resp.data.Search)
     } 
     }).catch(()=> {
       ctx.setMovies([])
-      // console.log('filmes pesquisados dentro useEffect apos apagar tudo', films)
-      // console.log('filmes pesquisados do AuthContext dentro useEffect apos apagar tudo', ctx.movies)
     })
   }, [sendRequest, search]);
 

@@ -1,5 +1,5 @@
 // hooks
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 // strip elements
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
@@ -7,7 +7,6 @@ import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import "./CheckoutForm.module.css";
 
 export default function CheckoutForm({onGetSuccessPayment, options}) {
-console.log('valor do filme a ser locado no form checkout',options.amount)
   const [error, setError] = useState(null);
   const stripe = useStripe();
   const elements = useElements();
@@ -70,7 +69,6 @@ console.log('valor do filme a ser locado no form checkout',options.amount)
       }),
     });
     const { client_secret: clientSecret } = await res.json();
-    console.log('clientSecret', clientSecret)
     const clientSecretString = clientSecret.toString()
     const payload = await stripe.confirmCardPayment(clientSecretString, {
       payment_method: {
