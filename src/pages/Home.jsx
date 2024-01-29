@@ -96,7 +96,7 @@ const Home = () => {
           <VStack>
             <Heading>Quero assistir</Heading>
             <Input placeholder="Digite o token de locação"/>
-            <iframe title="movie" src="https://embedder.net/e/movie?tmdb=592662" frameborder="0" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe>
+            {/* <iframe title="movie" src="https://embedder.net/e/movie?tmdb=592662" frameborder="0" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen=""></iframe> */}
           </VStack>
           
 

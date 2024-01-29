@@ -1,7 +1,5 @@
 //libs and hooks
 import React, { useContext, useState } from "react";
-import emailjs from "@emailjs/browser"
-
 // context
 import { MovieContext } from "../context/use-movie";
 
@@ -27,16 +25,12 @@ export default function MovieLocating() {
   const[ completeName, setCompleteName ]= useState('');
   const [cpf, setCpf] = useState('');
   const [email, setEmail] = useState('');
-
+  
   const [paymentSuccess, setPaymentSuccess] = useState('');
 
   const context = useContext(MovieContext);
 
   const price = `R$ ${context.detailsMovie.details[3]},00`
-
-  const publicKey = process.env.REACT_APP_EMAIL_JS_PUBLIC_KEY;
-  const idService = process.env.REACT_APP_ID_EMAIL_JS;
-  const template = process.env.REACT_APP_TEMPLATE_EMAIL_JS;
 
   const getPaymentSuccess = (state)=> {
 
@@ -59,24 +53,7 @@ export default function MovieLocating() {
       return;
     }
 
-    const templateParams = {
-      to_name: "Insomnia Films",
-      from_name: completeName,
-      message: `Você locou o filme: ${context.detailsMovie.details[0]} 
-      Valor pago: R$ ${context.detailsMovie.details[3]},00`,
-      emailUser: email
-    }
-
-    emailjs.send(idService, template, templateParams, publicKey).then(response => {
-      console.log("Email enviado com sucesso!", response.status, response.text)
-
-      setCompleteName('')
-      setCpf('')
-      setEmail('')
-
-    }, (error)=> {
-        console.log(error)
-    })
+    context.locate({completeName: completeName, email: email})
   }
  
 

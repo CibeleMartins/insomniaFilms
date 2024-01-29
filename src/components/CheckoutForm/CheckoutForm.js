@@ -14,7 +14,6 @@ export default function CheckoutForm({onGetSuccessPayment, options}) {
   const [disabled, setDisabled] = useState(true);
   const [succeeded, setSucceeded] = useState(false);
   const backendUrl = process.env.REACT_APP_AIRCODE_URL;
-  console.log('url aircode',backendUrl)
   const cardStyle = {
     style: {
       base: {

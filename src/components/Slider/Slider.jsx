@@ -46,7 +46,11 @@ export default function Slider({ data }) {
               </div>
 
               <Button
-                onClick={() => navigation("/locarFilme")}
+                onClick={() => {
+
+                  ctx.generateIntentionLocate()
+                  navigation("/locarFilme")
+                }}
                 className={styles.btn}
               >
                 Locar
@@ -76,9 +80,8 @@ export default function Slider({ data }) {
                       })
                       ctx.getDetailsMovie({
                         display: true,
-                        details: [m.title, m.poster, m.year, m.price],
+                        details: [m.title, m.poster, m.year, m.price, m.type, m.id],
                       })
-                      ctx.canLocated(m.type, m.id)
                     }
                     }
                     key={m.id}

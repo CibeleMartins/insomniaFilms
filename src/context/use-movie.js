@@ -1,41 +1,76 @@
 // libs, methods and hooks
-import axios from "axios";
 import { useState, createContext } from "react";
-export const MovieContext = createContext({});
+import { generateToken } from "../config/token";
+import {db} from '../config/firestore';
+import { addDoc, collection } from "firebase/firestore";
+import emailjs from "@emailjs/browser"
 
+export const MovieContext = createContext({});
 export const MovieContextCustom = ({ children }) => {
   const [detailsMovie, setDetailsMovie] = useState({
     display: false,
     details: [],
   });
-
-  const [canLocate, setCanLocate] = useState(null)
-
+  const [movieLocation, setMovieLocation] = useState({})
   const [movies, setMovies] = useState([]);
 
-  const canLocated = (type, id) => {
-    let resp;
-    if (type === "series") {
-      resp = axios.get(
-        process.env.REACT_APP_EMBEDDER_SERIES + `imdb=${id}&sea=1&epi=1`
-      );
 
-      console.log('series embedder', resp)
-    }
-
-    resp = axios.get(process.env.REACT_APP_EMBEDDER_MOVIE + `${id}`).then((r)=> {
-      console.log('filmes embedder', r)
-    }).catch((e)=> {
-      console.log('filmes embedder', e)
-    });
-    
-
-  };
+  const dataFinalLocation = '29/01/2024'
 
   const getDetailsMovie = (stateDetails) => {
     console.log("Detalhes do filme a ser locado", stateDetails);
     setDetailsMovie(stateDetails);
   };
+
+  const generateIntentionLocate = async ()=> {
+
+    const token = generateToken()
+    console.log('tipo do movie na intencao de locacao ', detailsMovie.details[4])
+    if(detailsMovie.details[4] === 'series') {
+      //vai ser preciso uma consulta um pouco mais inteligente aqui
+      console.log('gerou o link da série')
+      alert('ainda não locamos series')
+      // const movie = process.env.process.env.REACT_APP_EMBEDDER_MOVIE + detailsMovie.details[0].id
+    } else {
+      const movie = process.env.process.env.REACT_APP_EMBEDDER_MOVIE + detailsMovie.details[5]
+      const movieOfLocation = {
+        dataValidadeToken: dataFinalLocation,
+        linkMovie: movie,
+        token: token
+      }
+      setMovieLocation(movieOfLocation)
+      console.log('movie da locacao', movieLocation)
+    }
+   
+  }
+
+  const locate = async (dataFormLocation)=> {
+    try {
+      const docRef = await addDoc(collection(db, "insomniaFilms"), movieLocation);
+      console.log("Document written with ID: ", docRef.id);
+    } catch (e) {
+      console.error("Error adding document: ", e);
+    }
+
+    //serviço de email
+    const publicKey = process.env.REACT_APP_PUBLICKEY_EMAILJS
+    const idService = process.env.REACT_APP_ID_SERVICE_EMAILJS;
+    const template = process.env.REACT_APP_TEMPLATE_EMAILJS;
+
+    const templateParams = {
+      to_name: "Insomnia Films",
+      from_name: dataFormLocation.completeName,
+      message: `Você locou o filme: ${detailsMovie.details[0]} 
+      Valor pago: R$ ${detailsMovie.details[3]},00, a data final da locação é: ${dataFinalLocation}, até lá você pode acessar nosso site e assistir o filme com esse toke ${movieLocation.token}`,
+      emailUser: dataFormLocation.email
+    }
+
+    emailjs.send(idService, template, templateParams, publicKey).then(response => {
+      console.log("Email enviado com sucesso!", response.status, response.text)
+    }, (error)=> {
+        console.log(error)
+    })
+  }
 
   return (
     <MovieContext.Provider
@@ -44,7 +79,8 @@ export const MovieContextCustom = ({ children }) => {
         detailsMovie,
         setMovies,
         movies,
-        canLocated
+        generateIntentionLocate,
+        locate
       }}
     >
       {children}
